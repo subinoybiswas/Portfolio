@@ -27,8 +27,8 @@ export default function Home() {
   return (
     <main className=" select-none">
       <div
-        className="bg-fixed bg-gradient-to-bl h-[100vh]
-        from-[#000103] via-zinc-600/20 to-[#010610] flex flex-col  justify-center  p-24 text-center "
+        className="bg-fixed bg-gradient-to-bl h-[100vh] 
+        from-[#000103] via-zinc-600/20 to-[#010610] flex flex-col  justify-center items-center p-24 text-center sm:w-auto w-screen"
       >
         {init && (
           <Particles
@@ -101,12 +101,19 @@ export default function Home() {
           <a className="sm:hover:text-zinc-400 duration-500 active:text-zinc-400">
             Projects
           </a>
-          <a className="sm:hover:text-zinc-400 duration-500 active:text-zinc-400">Contact</a>
+          <a className="sm:hover:text-zinc-400 duration-500 active:text-zinc-400">
+            Contact
+          </a>
         </div>
-        <h1 className=" sm:text-7xl text-4xl">Subinoy</h1>
-        <div className="my-5 sm:my-10 text-lg sm:text-lg">Lorem ISpfdipf</div>
+        <div>
+          <h1 className=" text-7xl sm:text-8xl">Subinoy</h1>
+        </div>
+
+        <div className=" my-5 sm:my-10 text-sm sm:text-md sm:w-auto w-[70vw] text-slate-500">
+          <p>Your friendly neighbourhood developer</p>
+        </div>
       </div>
-      <div className=" bg-black flex flex-col">
+      <div className=" rounded-3xl bg-black flex flex-col">
         suh sd sd fsd fixedsd fsdsfd fsd
         <div>dcflskhf</div>
         <div>dcflskhf</div>
