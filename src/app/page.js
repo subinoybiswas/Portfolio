@@ -2,7 +2,10 @@
 import { useCallback, useEffect, useState } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
-
+import Image from "next/image";
+import Link from "next/link";
+import InstaLogo from "../../public/instagram-logo.png";
+import LinkedInLogo from "../../public/linkedin (1).png";
 export default function Home() {
   const [init, setInit] = useState(false);
   const particlesLoaded = (container) => {
@@ -103,6 +106,30 @@ export default function Home() {
 
         <div className=" my-5 sm:my-10 text-sm sm:text-md sm:w-auto w-[70vw] text-slate-500">
           <p>Your friendly neighbourhood developer</p>
+        </div>
+        <div className="flex flex-row gap-4">
+          <Link
+            href="https://www.instagram.com/biswas.subinoy"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            <Image
+              src={InstaLogo}
+              alt="Instagram Link"
+              className="w-[25px] invert-[.25] sm:hover:invert-[.75] duration-500 active:invert-[.75]"
+            />
+          </Link>
+          <Link
+            href="https://www.linkedin.com/in/heysubinoy/"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            <Image
+              src={LinkedInLogo}
+              alt="LinkedIn Link"
+              className="w-[25px] invert-[.25] sm:hover:invert-[.75] duration-500 active:invert-[.75]"
+            />
+          </Link>
         </div>
       </div>
       <div className=" rounded-3xl bg-black flex flex-col">
