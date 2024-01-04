@@ -101,7 +101,13 @@ export default function Home() {
           </a>
         </div>
         <div>
-          <h1 className=" text-7xl sm:text-8xl">Subinoy</h1>
+          <div
+            className="bg-clip-text text-transparent 
+bg-[linear-gradient(to_right,theme(colors.purple.400),theme(colors.purple.200),theme(colors.pink.500),theme(colors.purple.300),theme(colors.purple.200),theme(colors.purple.400))]
+bg-[length:200%_auto] animate-gradient pb-1 text-7xl sm:text-8xl "
+          >
+            Subinoy
+          </div>
         </div>
 
         <div className=" my-5 sm:my-10 text-sm sm:text-md sm:w-auto w-[70vw] text-slate-500">
