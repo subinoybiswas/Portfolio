@@ -17,6 +17,7 @@
     "tsparticles-slim": "^2.12.0"
   },
   "devDependencies": {
+    "@types/react": "18.2.46",
     "autoprefixer": "^10.0.1",
     "eslint": "^8",
     "eslint-config-next": "14.0.4",
