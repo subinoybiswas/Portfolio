@@ -1,5 +1,5 @@
 "use client";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, useRef } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 import Image from "next/image";
@@ -7,6 +7,7 @@ import Link from "next/link";
 import InstaLogo from "../../public/instagram-logo.png";
 import LinkedInLogo from "../../public/linkedin (1).png";
 import Project from "./project";
+import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 
 export default function Home() {
   const [init, setInit] = useState(false);
@@ -21,15 +22,19 @@ export default function Home() {
       setInit(true);
     });
   }, []);
+  const ref = useRef();
   return (
-    <main className=" select-none ">
-      <div
+    <Parallax className="select-none" pages={2} ref={ref}>
+      <ParallaxLayer
+        factor={4}
+        speed={0.5}
         className="bg-fixed bg-gradient-to-bl h-[100vh] 
-        from-[#000103] via-zinc-600/20 to-[#010610] flex flex-col  justify-center items-center p-24 text-center sm:w-auto w-screen"
+
+from-[#000103] via-zinc-600/20 to-[#010610] flex flex-col  justify-center items-center p-24 text-center sm:w-auto w-screen"
       >
         {init && (
           <Particles
-            className="z-[-1] "
+            className="z-[-1] h-screen "
             id="tsparticles"
             particlesLoaded={particlesLoaded}
             options={{
@@ -78,7 +83,7 @@ export default function Home() {
                     enable: true,
                     area: 400,
                   },
-                  value: 100,
+                  value: 50,
                 },
                 opacity: {
                   value: 0.5,
@@ -94,6 +99,11 @@ export default function Home() {
             }}
           />
         )}
+      </ParallaxLayer>
+      <ParallaxLayer
+        speed={1}
+        className="flex flex-col  justify-center items-center p-24 text-center"
+      >
         <div className="  flex  flex-row justify-center text-center sm:gap-4 gap-2 item-center my-5 sm:my-10 text-lg sm:text-lg text-zinc-600">
           <a className="sm:hover:text-zinc-400 duration-500 active:text-zinc-400">
             Projects
@@ -112,10 +122,10 @@ bg-[length:200%_auto] animate-gradient pb-1 text-7xl sm:text-8xl "
           </div>
         </div>
 
-        <div className=" my-5 sm:my-10 text-sm sm:text-md sm:w-auto w-[70vw] text-slate-500">
+        <div className=" my-5 text-center sm:my-10 text-sm sm:text-md sm:w-auto w-[70vw] text-slate-500">
           <p>Your friendly neighbourhood developer</p>
         </div>
-        <div className="flex flex-row gap-4">
+        <div className="flex flex-row gap-4 items-center justify-center">
           <Link
             href="https://www.instagram.com/biswas.subinoy"
             target="_blank"
@@ -139,10 +149,18 @@ bg-[length:200%_auto] animate-gradient pb-1 text-7xl sm:text-8xl "
             />
           </Link>
         </div>
-      </div>
-      <div className="">
-        <Project></Project>
-      </div>
-    </main>
+      </ParallaxLayer>
+      <ParallaxLayer
+        offset={1}
+        speed={1.25}
+        onClick={() => {
+          ref.current.scrollTo(2);
+        }}
+      >
+        <div className="">
+          <Project></Project>
+        </div>
+      </ParallaxLayer>
+    </Parallax>
   );
 }

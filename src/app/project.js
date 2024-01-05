@@ -2,7 +2,7 @@ import Spotlight from "./spotlight";
 import { SpotlightCard } from "./spotlight";
 export default function Project() {
   return (
-    <div className=" rounded-3xl  flex flex-col justify-center items-center my-4">
+    <div className=" rounded-3xl  flex flex-col justify-center items-center  my-8">
       <div className="sm:text-5xl text-4xl my-4">Projects</div>
       <Spotlight className="max-w-sm min-h-[18rem] mx-auto flex flex-col flex-wrap gap-y gap-6 lg:flex-row items-center justify-center lg:max-w-none group">
         <SpotlightCard>
