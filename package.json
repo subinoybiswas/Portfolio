@@ -12,6 +12,7 @@
     "@react-spring/parallax": "^9.7.3",
     "@tsparticles/react": "^3.0.0",
     "@tsparticles/slim": "^3.0.3",
+    "@vercel/postgres": "^0.5.1",
     "next": "14.0.4",
     "react": "^18",
     "react-device-detect": "^2.2.3",
