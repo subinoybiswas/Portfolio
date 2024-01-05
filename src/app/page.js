@@ -8,6 +8,7 @@ import InstaLogo from "../../public/instagram-logo.png";
 import LinkedInLogo from "../../public/linkedin (1).png";
 import Project from "./project";
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
+import { useScroll, animated } from "@react-spring/web";
 
 export default function Home() {
   const [init, setInit] = useState(false);
@@ -23,13 +24,14 @@ export default function Home() {
     });
   }, []);
   const ref = useRef();
+  const { scrollYProgress } = useScroll();
+
   return (
     <Parallax className="select-none" pages={2} ref={ref}>
       <ParallaxLayer
         factor={4}
         speed={0.5}
-        className="bg-fixed bg-gradient-to-bl h-[100vh] 
-
+        className="bg-gradient-to-bl
 from-[#000103] via-zinc-600/20 to-[#010610] flex flex-col  justify-center items-center p-24 text-center sm:w-auto w-screen"
       >
         {init && (
@@ -101,10 +103,11 @@ from-[#000103] via-zinc-600/20 to-[#010610] flex flex-col  justify-center items-
         )}
       </ParallaxLayer>
       <ParallaxLayer
-        speed={1}
-        className="flex flex-col  justify-center items-center p-24 text-center"
+        speed={0.75}
+        sticky={{ start: 0, end: 0.1 }}
+        className="flex flex-col justify-center items-center p-24 text-center"
       >
-        <div className="  flex  flex-row justify-center text-center sm:gap-4 gap-2 item-center my-5 sm:my-10 text-lg sm:text-lg text-zinc-600">
+        <div className="  flex  flex-row justify-center text-center sm:gap-4 gap-2 item-center sm:my-10 text-lg sm:text-lg text-zinc-600">
           <a className="sm:hover:text-zinc-400 duration-500 active:text-zinc-400">
             Projects
           </a>
@@ -150,16 +153,24 @@ bg-[length:200%_auto] animate-gradient pb-1 text-7xl sm:text-8xl "
           </Link>
         </div>
       </ParallaxLayer>
+
       <ParallaxLayer
         offset={1}
-        speed={1.25}
+        speed={1.0}
         onClick={() => {
           ref.current.scrollTo(2);
+          console.log(scrollYProgress);
         }}
       >
         <div className="">
-          <Project></Project>
+          <div className=" rounded-3xl  flex flex-col justify-center items-center ">
+            <div className="sm:text-5xl text-4xl my-4">Projects</div>
+          </div>
         </div>
+      </ParallaxLayer>
+      <ParallaxLayer offset={1.15} speed={0.75} className="justify-center items-center">
+        <Project></Project>
+        <div className="animate-bounce flex flex-col justify-center items-center pt-4">View More</div>
       </ParallaxLayer>
     </Parallax>
   );

@@ -14,6 +14,7 @@
     "@tsparticles/slim": "^3.0.3",
     "next": "14.0.4",
     "react": "^18",
+    "react-device-detect": "^2.2.3",
     "react-dom": "^18",
     "tsparticles-slim": "^2.12.0"
   },
