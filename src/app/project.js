@@ -7,7 +7,7 @@ export default function Project() {
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("/api/get-pet")
+    fetch("/api/get-pet", { next: { revalidate: 3600 } })
       .then((res) => res.json())
       .then((data) => {
         setData(data.pets);
