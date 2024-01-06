@@ -8,7 +8,7 @@ export async function GET(request) {
 
   try {
     const result = await sql`
-      INSERT INTO Pets (name, owner, pinned)
+      INSERT INTO AUTH (name, owner, pinned)
       VALUES (${petname}, ${petowner}, ${pinned});
     `;
 
