@@ -13,6 +13,7 @@
     "@tsparticles/react": "^3.0.0",
     "@tsparticles/slim": "^3.0.3",
     "@vercel/postgres": "^0.5.1",
+    "axios": "^1.6.5",
     "bcrypt": "^5.1.1",
     "cookie": "^0.6.0",
     "jsonwebtoken": "^9.0.2",
@@ -20,6 +21,7 @@
     "react": "^18",
     "react-device-detect": "^2.2.3",
     "react-dom": "^18",
+    "tailwindcss-animated": "^1.0.1",
     "tsparticles-slim": "^2.12.0"
   },
   "devDependencies": {
