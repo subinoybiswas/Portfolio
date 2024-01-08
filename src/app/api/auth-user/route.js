@@ -15,7 +15,7 @@ export async function GET() {
   try {
     const payload = verify(value, SECRET);
     const response = { username: payload.username };
-   
+
     return new Response(JSON.stringify(response), {
       status: 200,
     });

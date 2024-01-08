@@ -1,5 +1,5 @@
 "use client";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
@@ -7,11 +7,28 @@ export default function AdminLayout({ children }) {
   const [isSuccess, setSuccess] = useState(false);
   const { push } = useRouter();
   useEffect(() => {
-    const { user, error } = async () => await getUser();
-    if (error) {
-      push("/admin");
-    }
-    setSuccess(true);
+    const fetchData = async () => {
+      try {
+        await axios
+          .get("/api/auth-user")
+          .then((response) => {
+            if (response.status == 200) {
+              setSuccess(true);
+            }
+          })
+          .catch((error) => {
+            push("/admin");
+            alert("Not Signed In ", error);
+            console.log(error);
+          });
+      } catch (error) {
+        // Handle errors here if needed
+        push("/admin");
+        console.error("Error fetching user:", error);
+      }
+    };
+
+    fetchData();
   }, [push]);
   if (!isSuccess) {
     return <p>Loading...</p>;
@@ -20,10 +37,15 @@ export default function AdminLayout({ children }) {
 }
 async function getUser() {
   try {
-    const { data } = await axios.get("/api/auth-user");
-    console.log(data);
-    return { user: data, error: null };
+    await axios.get("/api/auth-user").then((response) => {
+      console.log("Status Code:", response.status);
+      console.log("Response Data:", response.d);
+      const res = response.data;
+      return res;
+    });
   } catch (e) {
-    return { user: null, error: e };
+    const error = e;
+    console.log(e);
+    return null;
   }
 }
