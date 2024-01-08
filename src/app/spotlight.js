@@ -24,7 +24,7 @@ export default function Spotlight({ children, className = "" }) {
 
   useEffect(() => {
     onMouseMove();
-  }, [mousePosition]);
+  });
 
   const initContainer = () => {
     if (containerRef.current) {
