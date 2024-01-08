@@ -1,25 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
-import axios from "axios";
 export default function AdminDashboard() {
   const { push } = useRouter();
-  const removeCookie = async () => {
-    try {
-      await axios
-        .get("/api/auth-user")
-        .then((response) => {
-          if (response.status == 200) {
-            console.log(response);
-            push("/admin");
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    } catch (error) {
-      console.error("Error fetching user:", error);
-    }
-  };
   return (
     <div className="bg-slate-200 flex flex-row  sm:h-screen sm:w-screen">
       <nav className="bg-sky-800 lg:flex lg:w-[40vw] lg:flex-col hidden gap-2 px-2  items-center h-screen ">
