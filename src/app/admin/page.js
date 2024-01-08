@@ -54,9 +54,6 @@ export default function AdminPage() {
       setErr(true);
     }
 
-    console.log("Username:", username);
-    console.log("Password:", password);
-    // Add your logic to handle the form data, e.g., sending it to the server
   };
   return (
     <main className="flex flex-col content-center items-center justify-center  h-screen select-none">
