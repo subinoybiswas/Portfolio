@@ -45,15 +45,13 @@ export default function AdminPage() {
         throw new Error("Network response was not ok");
       }
 
-      const data = await response.json();
+      await response.json();
 
       push("/admin/dashboard");
-    } catch (e) {
-      const error = e;
-
+    } catch {
       setErr(true);
+      setSubmitted(false);
     }
-
   };
   return (
     <main className="flex flex-col content-center items-center justify-center  h-screen select-none">
