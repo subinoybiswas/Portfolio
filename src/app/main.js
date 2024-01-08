@@ -15,7 +15,7 @@ import {
   isBrowser,
   isMobile,
 } from "react-device-detect";
-
+import Script from "next/script";
 export default function Main() {
   const [init, setInit] = useState(false);
   const particlesLoaded = (container) => {
@@ -34,6 +34,16 @@ export default function Main() {
 
   return (
     <div suppressHydrationWarning={true}>
+      <Script src="https://www.googletagmanager.com/gtag/js?id=G-6NQ6P5JBNG" />
+      <Script id="google-analytics">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+ 
+          gtag('config', 'G-6NQ6P5JBNG');
+        `}
+      </Script>
       {isBrowser ? (
         <main>
           <Parallax className="select-none" pages={2}>
