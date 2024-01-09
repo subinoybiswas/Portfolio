@@ -16,6 +16,7 @@ import {
   isMobile,
 } from "react-device-detect";
 import Script from "next/script";
+import AboutMe from "./aboutme";
 export default function Main() {
   const [init, setInit] = useState(false);
   const particlesLoaded = (container) => {
@@ -46,7 +47,7 @@ export default function Main() {
       </Script>
       {isBrowser ? (
         <main>
-          <Parallax className="select-none" pages={2}>
+          <Parallax className="select-none" pages={3}>
             <ParallaxLayer
               factor={4}
               speed={0.5}
@@ -122,8 +123,7 @@ export default function Main() {
               )}
             </ParallaxLayer>
             <ParallaxLayer
-              speed={0.75}
-              sticky={{ start: 0, end: 0.1 }}
+              speed={1}
               className="flex flex-col justify-center items-center p-24 text-center"
             >
               <div className="  flex  flex-row justify-center text-center sm:gap-4 gap-2 item-center sm:my-10 text-lg sm:text-lg text-zinc-600">
@@ -173,7 +173,7 @@ export default function Main() {
               </div>
             </ParallaxLayer>
 
-            <ParallaxLayer offset={1} speed={1.0}>
+            <ParallaxLayer offset={1}>
               <div className="">
                 <div className=" rounded-3xl  flex flex-col justify-center items-center ">
                   <div className="sm:text-5xl text-4xl my-4">Projects</div>
@@ -182,7 +182,6 @@ export default function Main() {
             </ParallaxLayer>
             <ParallaxLayer
               offset={1.15}
-              speed={0.75}
               className="justify-center items-center"
             >
               <Project></Project>
@@ -190,6 +189,19 @@ export default function Main() {
                 View More
               </div>
             </ParallaxLayer>
+            <ParallaxLayer  offset={1} className="bg-slate-200 z-[-1]" speed={0.75} ></ParallaxLayer>
+
+            <ParallaxLayer offset={2} speed={1.25}>
+              <div className="">
+                <div className=" rounded-3xl  flex flex-col justify-center items-center ">
+                  <div className="sm:text-5xl text-4xl my-4">Projects</div>
+                </div>
+              </div>
+            </ParallaxLayer>
+            <ParallaxLayer offset={2.25}>
+              <AboutMe></AboutMe>
+            </ParallaxLayer>
+            <ParallaxLayer  offset={2} className="bg-sky-200 z-[-1]" speed={0.75} ></ParallaxLayer>
           </Parallax>
         </main>
       ) : (
