@@ -17,6 +17,7 @@ import {
 } from "react-device-detect";
 import Script from "next/script";
 import AboutMe from "./aboutme";
+import GridLines from "react-gridlines";
 export default function Main() {
   const [init, setInit] = useState(false);
   const particlesLoaded = (container) => {
@@ -52,7 +53,7 @@ export default function Main() {
               factor={4}
               speed={0.5}
               className="bg-gradient-to-bl
-            from-[#000103] via-zinc-600/20 to-[#010610] flex flex-col  justify-center items-center p-24 text-center sm:w-auto w-screen"
+            from-[#000103] via-zinc-600/20 to-[#010610] flex flex-col  justify-center items-center p-24 text-center sm:w-auto w-screen z-[-2]"
             >
               {init && (
                 <Particles
@@ -189,19 +190,40 @@ export default function Main() {
                 View More
               </div>
             </ParallaxLayer>
-            <ParallaxLayer  offset={1} className="bg-slate-200 z-[-1]" speed={0.75} ></ParallaxLayer>
+            <ParallaxLayer
+              offset={1}
+              className="bg-gradient-to-b from-transparent via-[#010740] to-transparent z-[-1] rounded-3xl"
+              speed={0.75}
+            ></ParallaxLayer>
 
             <ParallaxLayer offset={2} speed={1.25}>
               <div className="">
                 <div className=" rounded-3xl  flex flex-col justify-center items-center ">
-                  <div className="sm:text-5xl text-4xl my-4">Projects</div>
+                  <div className="sm:text-5xl text-4xl my-4 text-black">Projects</div>
                 </div>
               </div>
             </ParallaxLayer>
             <ParallaxLayer offset={2.25}>
               <AboutMe></AboutMe>
             </ParallaxLayer>
-            <ParallaxLayer  offset={2} className="bg-sky-200 z-[-1]" speed={0.75} ></ParallaxLayer>
+            <ParallaxLayer
+              offset={2}
+              className="bg-slate-800  rounded-3xl z-[-1]"
+              speed={0.75}
+            >
+              <GridLines
+                className="grid-area h-[100%] z-[-1] bg-[#1a1b1e] rounded-3xl "
+                cellWidth={25}
+                cellWidth2={25}
+                strokeWidth={0.5}
+                strokeWidth2={0.5}
+               
+                lineColor={"#8F00FF45"}
+                lineColor2={"#8F00FF45"}
+              >
+                <h1>Gridlines demo</h1>
+              </GridLines>
+            </ParallaxLayer>
           </Parallax>
         </main>
       ) : (
