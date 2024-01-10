@@ -1,5 +1,5 @@
 "use client";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, useRef } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 import Image from "next/image";
@@ -15,7 +15,6 @@ import {
   isBrowser,
   isMobile,
 } from "react-device-detect";
-import Script from "next/script";
 import AboutMe from "./aboutme";
 import GridLines from "react-gridlines";
 export default function Main() {
@@ -33,22 +32,45 @@ export default function Main() {
   }, []);
 
   const { scrollYProgress } = useScroll();
+  const ref = useRef();
+  const projectRef = useRef();
+  const meRef = useRef();
+  const ScrollToProject = (x) => {
+    if (x === 1) {
+      ref.current.scrollTo(1);
+    } else if (x === 2) {
+      projectRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "start",
+      });
+    }
+    gtag("event", "button_click", {
+      event_category: "Button",
+      event_label: "project",
+    });
+  };
+  const ScrollToMe = (x) => {
+    if (x === 1) {
+      ref.current.scrollTo(2);
+    } else if (x === 2) {
+      meRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "start",
+      });
+    }
+    gtag("event", "button_click", {
+      event_category: "Button",
+      event_label: "about_me",
+    });
+  };
 
   return (
     <div suppressHydrationWarning={true}>
-      <Script src="https://www.googletagmanager.com/gtag/js?id=G-6NQ6P5JBNG" />
-      <Script id="google-analytics">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
- 
-          gtag('config', 'G-6NQ6P5JBNG');
-        `}
-      </Script>
       {isBrowser ? (
         <main>
-          <Parallax className="select-none" pages={3}>
+          <Parallax className="select-none" pages={3} ref={ref}>
             <ParallaxLayer
               factor={4}
               speed={0.5}
@@ -128,12 +150,18 @@ export default function Main() {
               className="flex flex-col justify-center items-center p-24 text-center"
             >
               <div className="  flex  flex-row justify-center text-center sm:gap-4 gap-2 item-center sm:my-10 text-lg sm:text-lg text-zinc-600">
-                <a className="sm:hover:text-zinc-400 duration-500 active:text-zinc-400">
+                <div
+                  className="sm:hover:text-zinc-400 duration-500 active:text-zinc-400"
+                  onClick={() => ScrollToProject(1)}
+                >
                   Projects
-                </a>
-                <a className="sm:hover:text-zinc-400 duration-500 active:text-zinc-400">
+                </div>
+                <div
+                  className="sm:hover:text-zinc-400 duration-500 active:text-zinc-400"
+                  onClick={() => ScrollToMe(1)}
+                >
                   Contact
-                </a>
+                </div>
               </div>
               <div>
                 <div
@@ -199,11 +227,13 @@ export default function Main() {
             <ParallaxLayer offset={2} speed={1.25}>
               <div className="">
                 <div className=" rounded-3xl  flex flex-col justify-center items-center ">
-                  <div className="sm:text-5xl text-4xl my-4 text-black">Projects</div>
+                  <div className="sm:text-5xl text-4xl my-4 text-black">
+                    Projects
+                  </div>
                 </div>
               </div>
             </ParallaxLayer>
-            <ParallaxLayer offset={2.25}>
+            <ParallaxLayer offset={2.25} className="ml-5">
               <AboutMe></AboutMe>
             </ParallaxLayer>
             <ParallaxLayer
@@ -217,7 +247,6 @@ export default function Main() {
                 cellWidth2={25}
                 strokeWidth={0.5}
                 strokeWidth2={0.5}
-               
                 lineColor={"rgb(30 41 59)"}
                 lineColor2={"rgb(30 41 59)"}
               >
@@ -301,10 +330,16 @@ export default function Main() {
                 />
               )}
               <div className="  flex  flex-row justify-center text-center sm:gap-4 gap-2 item-center my-5 sm:my-10 text-lg sm:text-lg text-zinc-600">
-                <a className="sm:hover:text-zinc-400 duration-500 active:text-zinc-400">
+                <a
+                  className="sm:hover:text-zinc-400 duration-500 active:text-zinc-400"
+                  onClick={() => ScrollToProject(2)}
+                >
                   Projects
                 </a>
-                <a className="sm:hover:text-zinc-400 duration-500 active:text-zinc-400">
+                <a
+                  className="sm:hover:text-zinc-400 duration-500 active:text-zinc-400"
+                  onClick={() => ScrollToMe(2)}
+                >
                   Contact
                 </a>
               </div>
@@ -346,7 +381,7 @@ bg-[length:200%_auto] animate-gradient pb-1 text-7xl sm:text-8xl "
                 </Link>
               </div>
             </div>
-            <div className="">
+            <div className="" ref={projectRef}>
               <div className="flex flex-col text-center items-center justify-center text-4xl mb-4">
                 Projects
               </div>
@@ -354,6 +389,22 @@ bg-[length:200%_auto] animate-gradient pb-1 text-7xl sm:text-8xl "
               <div className="animate-bounce flex flex-col justify-center items-center py-6">
                 View More
               </div>
+            </div>
+            <div className="" ref={meRef}>
+              <GridLines
+                className="grid-area  z-[-1] bg-slate-100 rounded-3xl h-screen"
+                cellWidth={25}
+                cellWidth2={25}
+                strokeWidth={0.5}
+                strokeWidth2={0.5}
+                lineColor={"rgb(30 41 59)"}
+                lineColor2={"rgb(30 41 59)"}
+              >
+                <div className="flex flex-col justify-center items-center gap-6">
+                  <h1 className="text-black text-4xl m-2">About Me</h1>
+                  <AboutMe className=""></AboutMe>
+                </div>
+              </GridLines>
             </div>
           </div>
         </main>

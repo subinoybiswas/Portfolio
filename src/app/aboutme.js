@@ -2,7 +2,7 @@ import Tilt from "react-parallax-tilt";
 import Image from "next/image";
 export default function AboutMe() {
   return (
-    <Tilt className="h-[350px] w-[250px] bg-slate-600 rounded-2xl ml-9 ">
+    <Tilt className="h-[350px] w-[250px] bg-slate-600 rounded-2xl">
       <div className="h-full w-full rounded-2xl bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-1 rotate-6 hover:rotate-12 hover:scale-105 transition duration-500">
         <div className="bg-slate-100  h-full w-full rounded-2xl">
           <Image
