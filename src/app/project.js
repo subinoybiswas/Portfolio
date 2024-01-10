@@ -23,13 +23,13 @@ export default function Project() {
           className="max-w-sm  mx-2  flex-wrap  lg:max-w-none group mb-4"
         >
           <SpotlightCard>
-            <div className="relative h-full bg-[#1d1543] p-6 pb-8 rounded-[inherit] z-20 overflow-hidden">
+            <div className="relative h-full bg-[#0f172a] p-6 pb-8 rounded-[inherit] z-20 overflow-hidden">
               {/* Radial gradient */}
               <div
                 className="absolute bottom-0 translate-y-1/2 left-1/2 -translate-x-1/2 pointer-events-none -z-10 w-1/2 aspect-square"
                 aria-hidden="true"
               >
-                <div className="absolute inset-0 translate-z-0 bg-slate-800 rounded-full blur-[80px]"></div>
+                <div className="absolute inset-0 translate-z-0 bg-[#090c3bdd] rounded-full blur-[80px]"></div>
               </div>
               <div className="flex flex-col h-full items-center text-center">
                 {/* Image */}
