@@ -199,7 +199,9 @@ export default function Main() {
             <ParallaxLayer offset={2} speed={1.25}>
               <div className="">
                 <div className=" rounded-3xl  flex flex-col justify-center items-center ">
-                  <div className="sm:text-5xl text-4xl my-4 text-black">Projects</div>
+                  <div className="sm:text-5xl text-4xl my-4 text-black">
+                    Projects
+                  </div>
                 </div>
               </div>
             </ParallaxLayer>
@@ -217,7 +219,6 @@ export default function Main() {
                 cellWidth2={25}
                 strokeWidth={0.5}
                 strokeWidth2={0.5}
-               
                 lineColor={"rgb(30 41 59)"}
                 lineColor2={"rgb(30 41 59)"}
               >
@@ -228,6 +229,16 @@ export default function Main() {
         </main>
       ) : (
         <main>
+          <Script src="https://www.googletagmanager.com/gtag/js?id=G-6NQ6P5JBNG" />
+          <Script id="google-analytics">
+            {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+ 
+          gtag('config', 'G-6NQ6P5JBNG');
+        `}
+          </Script>
           <div
             className=" select-none bg-gradient-to-bl
     from-[#000103] via-zinc-600/20 to-[#010610] "
