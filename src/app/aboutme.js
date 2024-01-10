@@ -6,7 +6,7 @@ export default function AboutMe() {
       <div className="h-full w-full rounded-2xl bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-1 rotate-6 hover:rotate-12 hover:scale-105 transition duration-500">
         <div className="bg-slate-100  h-full w-full rounded-2xl">
           <Image
-            src="/me.jpg"
+            src="/Me.jpg"
             alt="Subinoy Biswas"
             width={250}
             height={350}
