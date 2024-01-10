@@ -192,7 +192,7 @@ export default function Main() {
             </ParallaxLayer>
             <ParallaxLayer
               offset={1}
-              className="bg-gradient-to-b from-transparent via-[#010740] to-transparent z-[-1] rounded-3xl"
+              className="bg-gradient-to-b from-transparent via-[#010740]/50 to-transparent z-[-1] rounded-3xl"
               speed={0.75}
             ></ParallaxLayer>
 
@@ -212,14 +212,14 @@ export default function Main() {
               speed={0.75}
             >
               <GridLines
-                className="grid-area h-[100%] z-[-1] bg-[#1a1b1e] rounded-3xl "
+                className="grid-area h-[100%] z-[-1] bg-slate-100 rounded-3xl "
                 cellWidth={25}
                 cellWidth2={25}
                 strokeWidth={0.5}
                 strokeWidth2={0.5}
                
-                lineColor={"#8F00FF45"}
-                lineColor2={"#8F00FF45"}
+                lineColor={"rgb(30 41 59)"}
+                lineColor2={"rgb(30 41 59)"}
               >
                 <h1>Gridlines demo</h1>
               </GridLines>
