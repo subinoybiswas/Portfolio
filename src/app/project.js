@@ -7,12 +7,12 @@ export default function Project() {
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("/api/get-projects", { next: { revalidate: 3600 } })
+    fetch("/api/get-projects", { next: { revalidate: 1 } })
       .then((res) => res.json())
       .then((data) => {
-        setData(data.pets);
+        setData(data.projects);
         setLoading(false);
-        console.log(data);
+        // console.log(data);
       });
   }, []);
   return !isLoading ? (
@@ -42,16 +42,13 @@ export default function Project() {
                 {/* Text */}
                 <div className="grow mb-5">
                   <h2 className="text-xl text-slate-200 font-bold mb-1">
-                    {item.name}
+                    {item.title}
                   </h2>
-                  <p className="text-sm text-slate-500">
-                    Quickly apply filters to refine your issues lists and create
-                    custom views.
-                  </p>
+                  <p className="text-sm text-slate-500">{item.content}</p>
                 </div>
                 <a
                   className="inline-flex justify-center items-center whitespace-nowrap rounded-lg bg-slate-800 hover:bg-slate-900 border border-slate-700 px-3 py-1.5 text-sm font-medium text-slate-300 focus-visible:outline-none focus-visible:ring focus-visible:ring-indigo-300 dark:focus-visible:ring-slate-600 transition-colors duration-150"
-                  href="#0"
+                  href={item.githublink}
                 >
                   <svg
                     className="fill-slate-500 mr-2"
