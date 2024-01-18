@@ -1,7 +1,7 @@
 import { db } from "@vercel/postgres";
 import { NextResponse } from "next/server";
 export const fetchCache = "force-no-store";
-export async function GET(request) {
+export async function POST(request) {
   const req = request;
   try {
     const client = await db.connect();

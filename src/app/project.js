@@ -7,7 +7,7 @@ export default function Project() {
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("/api/get-projects", { next: { revalidate: 1 } })
+    fetch("/api/get-projects", { method: "POST" })
       .then((res) => res.json())
       .then((data) => {
         setData(data.projects);
