@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import EditModal from "./editModal";
 import AddModal from "./addModal";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 export default function Projects() {
   const [projects, setProjects] = useState([]);
   const [current_project, setCurrentProject] = useState({
@@ -52,9 +54,29 @@ export default function Projects() {
         },
       });
       closeModal();
+      toast.success("Added Project!", {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
       fetchProjects();
     } catch (error) {
       console.error("Error adding project:", error);
+      toast.error("Couldn't Create Project!", {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
     }
   };
 
@@ -64,8 +86,28 @@ export default function Projects() {
       setProjects(
         projects.filter((project) => project.project_id !== projectId)
       );
+      toast.warn("Deleted Project!", {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
     } catch (error) {
       console.error("Error deleting project:", error);
+      toast.error("Couldn't Delete Project!", {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
     }
   };
 
@@ -89,8 +131,28 @@ export default function Projects() {
       );
       closeModal();
       fetchProjects();
+      toast.warn("Edited Project!", {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     } catch (error) {
       console.error("Error editing project:", error);
+      toast.warn("Couldn't Delete Project!", {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
     }
   };
   const handleChange = (e) => {
@@ -113,87 +175,102 @@ export default function Projects() {
     setModal(2);
   };
   return (
-    <div className="content-center justify-center items-center flex flex-col">
-      <h1 className="text-2xl font-bold mb-4">Projects Page</h1>
+    <div>
+      {" "}
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+      <div className="content-center justify-center items-center flex flex-col">
+        <h1 className="text-2xl font-bold mb-4">Projects Page</h1>
 
-      {modal === 1 ? (
-        <EditModal
-          current_project={current_project}
-          handleChangeEdit={handleChangeEdit}
-          editProject={editProject}
-          closeModal={closeModal}
-        />
-      ) : modal === 2 ? (
-        <AddModal
-          project={formData}
-          handleChange={handleChange}
-          addProject={addProject}
-          closeModal={closeModal}
-        />
-      ) : (
-        <></>
-      )}
+        {modal === 1 ? (
+          <EditModal
+            current_project={current_project}
+            handleChangeEdit={handleChangeEdit}
+            editProject={editProject}
+            closeModal={closeModal}
+          />
+        ) : modal === 2 ? (
+          <AddModal
+            project={formData}
+            handleChange={handleChange}
+            addProject={addProject}
+            closeModal={closeModal}
+          />
+        ) : (
+          <></>
+        )}
 
-      <table className="min-w-full bg-black border border-gray-300">
-        <thead>
-          <tr>
-            <th className="border border-gray-300 px-4 py-2">Title</th>
-            <th className="border border-gray-300 px-4 py-2">Content</th>
-            <th className="border border-gray-300 px-4 py-2">GitHub Link</th>
-            <th className="border border-gray-300 px-4 py-2">Web Link</th>
-            <th className="border border-gray-300 px-4 py-2">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {projects.map((project) => (
-            <tr key={project.project_id}>
-              <td className="border border-gray-300 px-4 py-2">
-                {project.title}
-              </td>
-              <td className="border border-gray-300 px-4 py-2">
-                {project.content}
-              </td>
-              <td className="border border-gray-300 px-4 py-2">
-                <a
-                  href={project.githublink}
-                  className="text-blue-500 hover:underline"
-                >
-                  GitHub Link
-                </a>
-              </td>
-              <td className="border border-gray-300 px-4 py-2">
-                <a
-                  href={project.weblink}
-                  className="text-blue-500 hover:underline"
-                >
-                  Web Link
-                </a>
-              </td>
-              <td className="border border-gray-300 px-4 py-2">
-                <button
-                  onClick={() => deleteProject(project.project_id)}
-                  className="bg-red-500 text-white px-4 py-2 rounded mr-2"
-                >
-                  Delete
-                </button>
-                <button
-                  onClick={() => editProjectModal(project.project_id)}
-                  className="bg-blue-500 text-white px-4 py-2 rounded"
-                >
-                  Edit
-                </button>
-              </td>
+        <table className="min-w-full bg-black border border-gray-300">
+          <thead>
+            <tr>
+              <th className="border border-gray-300 px-4 py-2">Title</th>
+              <th className="border border-gray-300 px-4 py-2">Content</th>
+              <th className="border border-gray-300 px-4 py-2">GitHub Link</th>
+              <th className="border border-gray-300 px-4 py-2">Web Link</th>
+              <th className="border border-gray-300 px-4 py-2">Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {projects.map((project) => (
+              <tr key={project.project_id}>
+                <td className="border border-gray-300 px-4 py-2">
+                  {project.title}
+                </td>
+                <td className="border border-gray-300 px-4 py-2 max-w-sm">
+                  {project.content}
+                </td>
+                <td className="border border-gray-300 px-4 py-2">
+                  <a
+                    href={project.githublink}
+                    className="text-blue-500 hover:underline"
+                  >
+                    GitHub Link
+                  </a>
+                </td>
+                <td className="border border-gray-300 px-4 py-2">
+                  <a
+                    href={project.weblink}
+                    className="text-blue-500 hover:underline"
+                  >
+                    Web Link
+                  </a>
+                </td>
+                <td className="border border-gray-300 px-4 py-2 max-w-[100px]">
+                  <button
+                    onClick={() => deleteProject(project.project_id)}
+                    className="bg-red-500 text-white px-4 py-2 rounded mr-2"
+                  >
+                    Delete
+                  </button>
+                  <button
+                    onClick={() => editProjectModal(project.project_id)}
+                    className="bg-blue-500 text-white px-4 py-2 rounded"
+                  >
+                    Edit
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
 
-      <button
-        onClick={() => addProjectModal()}
-        className="bg-blue-500 text-white px-4 py-2 rounded mt-4"
-      >
-        Add Project
-      </button>
+        <button
+          onClick={() => addProjectModal()}
+          className="bg-blue-500 text-white px-4 py-2 rounded mt-4"
+        >
+          Add Project
+        </button>
+      </div>
     </div>
   );
 }
