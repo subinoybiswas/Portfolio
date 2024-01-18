@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import EditModal from "./editModal";
 export default function Projects() {
   const [projects, setProjects] = useState([]);
   const [current_project, setCurrentProject] = useState({
@@ -100,54 +101,11 @@ export default function Projects() {
       <h1 className="text-2xl font-bold mb-4 content-center">Projects Page</h1>
       {/* Render projects list */}
       {modal ? (
-        <div>
-          <form
-            key={current_project.project_id}
-            onSubmit={(e) => {
-              e.preventDefault();
-              editProject(current_project.project_id);
-            }}
-            className="mt-4 text-black"
-          >
-            <input
-              type="text"
-              name="title"
-              value={current_project.title}
-              required
-              className="border border-gray-300 rounded px-2 py-1"
-              onChange={handleChangeEdit}
-            />
-            <textarea
-              name="content"
-              value={current_project.content}
-              required
-              className="border border-gray-300 rounded px-2 py-1 mt-2"
-              onChange={handleChangeEdit}
-            ></textarea>
-            <input
-              type="text"
-              name="githublink"
-              placeholder="GitHub Link"
-              value={current_project.githublink}
-              className="border border-gray-300 rounded px-2 py-1 mt-2"
-              onChange={handleChangeEdit}
-            />
-            <input
-              type="text"
-              name="weblink"
-              placeholder="Web Link"
-              value={current_project.weblink}
-              className="border border-gray-300 rounded px-2 py-1 mt-2"
-              onChange={handleChangeEdit}
-            />
-            <button
-              type="submit"
-              className="bg-green-500 text-white px-4 py-2 rounded mt-2"
-            >
-              Edit Project
-            </button>
-          </form>
-        </div>
+        <EditModal
+          current_project={current_project}
+          handleChangeEdit={handleChangeEdit}
+          editProject={editProject}
+        />
       ) : (
         <></>
       )}
