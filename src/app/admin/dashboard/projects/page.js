@@ -24,16 +24,24 @@ export default function Projects() {
 
   const fetchProjects = async () => {
     try {
-      const response = await axios.get("/api/get-projects", {
-        cache: "no-store", // Disable caching
+      const response = await fetch("/api/get-projects", {
+        method: "GET",
+        headers: {
+          "Cache-Control": "no-store", // Disable caching
+        },
       });
-      //   console.log(response.data.projects);
-      setProjects(response.data.projects);
-      //   console.log(projects);
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      setProjects(data.projects);
     } catch (error) {
       console.error("Error fetching projects:", error);
     }
   };
+
   //   console.log(formData);
 
   const addProject = async () => {
