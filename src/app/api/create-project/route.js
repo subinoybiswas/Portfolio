@@ -7,7 +7,7 @@ import { cookies } from "next/headers";
 export async function POST(request) {
   const body = await request.json();
   const title = body.title || null;
-  const ghlink = body.ghlink || null;
+  const githublink = body.githublink || null;
   const pinned = body.pinned || null;
   const content = body.content || null;
   const weblink = body.weblink || null;
@@ -26,7 +26,7 @@ export async function POST(request) {
     }
     const result = await sql`
       INSERT INTO Projects (title, content,githublink,weblink,pinned)
-      VALUES (${title}, ${content},${ghlink ? ghlink : null},${
+      VALUES (${title}, ${content},${githublink ? githublink : null},${
       weblink ? weblink : null
     },${pinned ? pinned : 0});
     `;

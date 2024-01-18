@@ -7,7 +7,7 @@ export async function PUT(request, { params }) {
   const body = await request.json();
   const project_id = params.id || null;
   const title = body.title || null;
-  const ghlink = body.ghlink || null;
+  const githublink = body.githublink || null;
   const pinned = body.pinned || null;
   const content = body.content || null;
   const weblink = body.weblink || null;
@@ -29,7 +29,7 @@ export async function PUT(request, { params }) {
       SET
         title = ${title},
         content = ${content},
-        githublink = ${ghlink},
+        githublink = ${githublink},
         weblink = ${weblink},
         pinned = ${pinned}
       WHERE project_id = ${project_id}
