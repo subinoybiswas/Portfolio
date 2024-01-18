@@ -11,10 +11,10 @@ export default function AdminDashboard() {
     }
   };
   return (
-    <div className="bg-slate-200 flex flex-row  sm:h-screen sm:w-screen">
-      <nav className="bg-sky-800 lg:flex lg:w-[40vw] lg:flex-col hidden gap-2 px-2  items-center h-screen ">
+    <div className="bg-slate-200 flex flex-row  sm:h-screen sm:w-screen select-none">
+      <nav className="bg-sky-800 lg:flex lg:w-[25vw] lg:flex-col hidden gap-2 px-2  items-center h-screen ">
+        <nav onClick={btnClick}>Logout</nav>
         <nav>Hi</nav>
-        <nav onClick={btnClick}>Meow</nav>
       </nav>
       <div className="flex-grow">
         <nav className="bg-sky-800 flex flex-row  gap-2 flex-wrap h-10 items-center ">

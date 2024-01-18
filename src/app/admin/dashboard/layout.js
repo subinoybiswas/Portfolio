@@ -1,5 +1,5 @@
 "use client";
-import axios, { AxiosError } from "axios";
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
@@ -34,18 +34,4 @@ export default function AdminLayout({ children }) {
     return <p>Loading...</p>;
   }
   return <main>{children}</main>;
-}
-async function getUser() {
-  try {
-    await axios.get("/api/auth-user").then((response) => {
-      console.log("Status Code:", response.status);
-      console.log("Response Data:", response.d);
-      const res = response.data;
-      return res;
-    });
-  } catch (e) {
-    const error = e;
-    console.log(e);
-    return null;
-  }
 }
