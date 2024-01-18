@@ -27,7 +27,7 @@ export default function Projects() {
       const response = await fetch("/api/get-projects", {
         method: "GET",
         headers: {
-          "Cache-Control": "no-store", // Disable caching
+          "Cache-Control": "private, no-cache, no-store", // Disable caching
         },
       });
 
