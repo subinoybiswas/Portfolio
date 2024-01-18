@@ -1,11 +1,10 @@
 import { db } from "@vercel/postgres";
 import { NextResponse } from "next/server";
-
+export const fetchCache = "force-no-store";
 export async function GET() {
   try {
     const client = await db.connect();
-    const { rows: projects } = await client.query("SELECT * FROM Projects");
-    client.release(); // Release the client back to the pool
+    const { rows: projects } = await client.sql`SELECT * FROM Projects`;
 
     return NextResponse.json(
       { projects },
