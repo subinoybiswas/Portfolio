@@ -4,7 +4,7 @@ import Spotlight from "@/app/spotlight";
 import { SpotlightCard } from "@/app/spotlight";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { PrimeReactProvider, PrimeReactContext } from "primereact/api";
+
 
 export default function AdminPage() {
   const { push } = useRouter();
@@ -56,7 +56,6 @@ export default function AdminPage() {
     }
   };
   return (
-    <PrimeReactProvider>
       <main className="flex flex-col content-center items-center justify-center  h-screen select-none">
         <Spotlight className=" max-w-sm  mx-2  flex-wrap  lg:max-w-none group mb-4">
           <SpotlightCard>
@@ -151,6 +150,5 @@ export default function AdminPage() {
           </SpotlightCard>
         </Spotlight>
       </main>
-    </PrimeReactProvider>
   );
 }

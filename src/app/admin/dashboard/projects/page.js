@@ -1,10 +1,20 @@
 "use client";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import "../../../globals.css";
+import "primereact/resources/themes/md-dark-deeppurple/theme.css";
+import "primereact/resources/primereact.min.css";
+import "primeicons/primeicons.css";
+import "primeflex/primeflex.css";
 import EditModal from "./editModal";
 import AddModal from "./addModal";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { DataTable } from "primereact/datatable";
+import { Column } from "primereact/column";
+import { Button } from "primereact/button";
+import { ConfirmDialog, confirmDialog } from "primereact/confirmdialog";
+import { PrimeReactProvider, PrimeReactContext } from "primereact/api";
 export default function Projects() {
   const [projects, setProjects] = useState([]);
   const [current_project, setCurrentProject] = useState({
@@ -41,6 +51,16 @@ export default function Projects() {
       setProjects(data.projects);
     } catch (error) {
       console.error("Error fetching projects:", error);
+      toast.error("Error Fetching Projects!", {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
     }
   };
 
@@ -122,6 +142,7 @@ export default function Projects() {
       console.error("Error editing project:", error);
     }
   };
+
   const editProject = async (projectId) => {
     try {
       // console.log(projectId);
@@ -155,6 +176,51 @@ export default function Projects() {
       });
     }
   };
+  const accept = (id) => {
+    deleteProject(id);
+  };
+
+  const reject = () => {};
+  const confirm = (id) => {
+    confirmDialog({
+      message: "Do you want to delete this project?",
+      header: "Delete Confirmation",
+      icon: "pi pi-info-circle",
+      defaultFocus: "reject",
+      acceptClassName: "p-button-danger",
+      accept: () => accept(id),
+      reject,
+    });
+  };
+  const ButtonTemplate = (project) => {
+    return (
+      <div className="flex flex-row gap-2">
+        <Button onClick={() => confirm(project.project_id)} severity="danger">
+          Delete
+        </Button>
+        <Button
+          onClick={() => editProjectModal(project.project_id)}
+          severity="warning"
+        >
+          Edit
+        </Button>
+      </div>
+    );
+  };
+  const GitHubLinkTemplate = (project) => {
+    return (
+      <a href={project.githublink} className="text-blue-500 hover:underline">
+        {project.githublink}
+      </a>
+    );
+  };
+  const WebLinkTemplate = (project) => {
+    return (
+      <a href={project.weblink} className="text-blue-500 hover:underline">
+        {project.weblink}
+      </a>
+    );
+  };
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -175,102 +241,64 @@ export default function Projects() {
     setModal(2);
   };
   return (
-    <div>
-      {" "}
-      <ToastContainer
-        position="bottom-right"
-        autoClose={5000}
-        hideProgressBar
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
-      <div className="content-center justify-center items-center flex flex-col">
-        <h1 className="text-2xl font-bold mb-4">Projects Page</h1>
+    <PrimeReactProvider>
+      <div>
+        <ConfirmDialog />{" "}
+        <ToastContainer
+          position="bottom-right"
+          autoClose={5000}
+          hideProgressBar
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
+        <div className="content-center justify-center items-center flex flex-col">
+          <h1 className="text-4xl font-bold m-4">Projects Page</h1>
 
-        {modal === 1 ? (
-          <EditModal
-            current_project={current_project}
-            handleChangeEdit={handleChangeEdit}
-            editProject={editProject}
-            closeModal={closeModal}
-          />
-        ) : modal === 2 ? (
-          <AddModal
-            project={formData}
-            handleChange={handleChange}
-            addProject={addProject}
-            closeModal={closeModal}
-          />
-        ) : (
-          <></>
-        )}
+          {modal === 1 ? (
+            <EditModal
+              current_project={current_project}
+              handleChangeEdit={handleChangeEdit}
+              editProject={editProject}
+              closeModal={closeModal}
+              modal={modal}
+            />
+          ) : modal === 2 ? (
+            <AddModal
+              project={formData}
+              handleChange={handleChange}
+              addProject={addProject}
+              closeModal={closeModal}
+              modal={modal}
+            />
+          ) : (
+            <></>
+          )}
+          <DataTable
+            value={projects}
+            showGridlines
+            tableStyle={{ minWidth: "50rem" }}
+            className="p-4"
+          >
+            <Column field="title" header="Name"></Column>
+            <Column field="content" header="Category"></Column>
+            <Column body={GitHubLinkTemplate} header="GitHub Link"></Column>
+            <Column body={WebLinkTemplate} header="Web Link"></Column>
+            <Column body={ButtonTemplate} header="Actions"></Column>
+          </DataTable>
 
-        <table className="min-w-full bg-black border border-gray-300">
-          <thead>
-            <tr>
-              <th className="border border-gray-300 px-4 py-2">Title</th>
-              <th className="border border-gray-300 px-4 py-2">Content</th>
-              <th className="border border-gray-300 px-4 py-2">GitHub Link</th>
-              <th className="border border-gray-300 px-4 py-2">Web Link</th>
-              <th className="border border-gray-300 px-4 py-2">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {projects.map((project) => (
-              <tr key={project.project_id}>
-                <td className="border border-gray-300 px-4 py-2">
-                  {project.title}
-                </td>
-                <td className="border border-gray-300 px-4 py-2 max-w-sm">
-                  {project.content}
-                </td>
-                <td className="border border-gray-300 px-4 py-2">
-                  <a
-                    href={project.githublink}
-                    className="text-blue-500 hover:underline"
-                  >
-                    GitHub Link
-                  </a>
-                </td>
-                <td className="border border-gray-300 px-4 py-2">
-                  <a
-                    href={project.weblink}
-                    className="text-blue-500 hover:underline"
-                  >
-                    Web Link
-                  </a>
-                </td>
-                <td className="border border-gray-300 px-4 py-2 max-w-[100px]">
-                  <button
-                    onClick={() => deleteProject(project.project_id)}
-                    className="bg-red-500 text-white px-4 py-2 rounded mr-2"
-                  >
-                    Delete
-                  </button>
-                  <button
-                    onClick={() => editProjectModal(project.project_id)}
-                    className="bg-blue-500 text-white px-4 py-2 rounded"
-                  >
-                    Edit
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-
-        <button
-          onClick={() => addProjectModal()}
-          className="bg-blue-500 text-white px-4 py-2 rounded mt-4"
-        >
-          Add Project
-        </button>
+          <button
+            onClick={() => addProjectModal()}
+            className="bg-blue-500 text-white px-4 py-2 rounded mt-4"
+          >
+            Add Project
+          </button>
+        </div>
       </div>
-    </div>
+    </PrimeReactProvider>
   );
 }
