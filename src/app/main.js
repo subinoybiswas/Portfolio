@@ -5,6 +5,7 @@ import { loadSlim } from "@tsparticles/slim";
 import Image from "next/image";
 import Link from "next/link";
 import InstaLogo from "../../public/instagram-logo.png";
+import GitHubLogo from "../../public/github-mark.png";
 import LinkedInLogo from "../../public/linkedin (1).png";
 import Project from "./project";
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
@@ -178,12 +179,12 @@ export default function Main() {
               </div>
               <div className="flex flex-row gap-4 items-center justify-center">
                 <Link
-                  href="https://www.instagram.com/biswas.subinoy"
+                  href="https://www.github.com/subinoybiswas"
                   target="_blank"
                   rel="noreferrer noopener"
                 >
                   <Image
-                    src={InstaLogo}
+                    src={GitHubLogo}
                     alt="Instagram Link"
                     className="w-[25px] invert-[.25] sm:hover:invert-[.75] duration-500 active:invert-[.75]"
                   />
@@ -227,9 +228,25 @@ export default function Main() {
             <ParallaxLayer offset={2} speed={1.25}>
               <div className="">
                 <div className=" rounded-3xl  flex flex-col justify-center items-center ">
-                  <div className="sm:text-5xl text-4xl my-4 text-black">
-                    Projects
+                  <div
+                    className="
+                    bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500  bg-clip-text text-transparent pb-1 text-3xl sm:text-5xl p-2 z-[100] font-outline-2 font-semibold
+                    "
+                  >
+                    About Me
                   </div>
+                </div>
+              </div>
+            </ParallaxLayer>
+            <ParallaxLayer offset={2.15} speed={0.75}>
+              <div className="flex flex-col text-black text-3xl ml-80">
+                <div>Hey👋 I&apos;m Subinoy</div>
+                <div className="text-xl">
+                  <ul>
+                    <li>🚀 FullStack Developer </li>
+                    <li>✍️ Technical Content Writer </li>
+                    <li>⚙️ Community Builder</li>
+                  </ul>
                 </div>
               </div>
             </ParallaxLayer>
@@ -241,17 +258,17 @@ export default function Main() {
               className="bg-slate-800  rounded-3xl z-[-1]"
               speed={0.75}
             >
-              <GridLines
-                className="grid-area h-[100%] z-[-1] bg-slate-100 rounded-3xl "
-                cellWidth={25}
-                cellWidth2={25}
-                strokeWidth={0.5}
-                strokeWidth2={0.5}
-                lineColor={"rgb(30 41 59)"}
-                lineColor2={"rgb(30 41 59)"}
-              >
-                <h1>Gridlines demo</h1>
-              </GridLines>
+              <div class="h-full w-full rounded-md bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-1">
+                <GridLines
+                  className="grid-area h-[100%]  z-[-1] bg-white rounded-3xl "
+                  cellWidth={25}
+                  cellWidth2={25}
+                  strokeWidth={0.25}
+                  strokeWidth2={0.25}
+                  lineColor={"rgb(30 41 59)"}
+                  lineColor2={"rgb(30 41 59)"}
+                ></GridLines>
+              </div>
             </ParallaxLayer>
           </Parallax>
         </main>
@@ -358,12 +375,12 @@ bg-[length:200%_auto] animate-gradient pb-1 text-7xl sm:text-8xl "
               </div>
               <div className="flex flex-row gap-4">
                 <Link
-                  href="https://www.instagram.com/biswas.subinoy"
+                  href="https://www.github.com/subinoybiswas"
                   target="_blank"
                   rel="noreferrer noopener"
                 >
                   <Image
-                    src={InstaLogo}
+                    src={GitHubLogo}
                     alt="Instagram Link"
                     className="w-[25px] invert-[.25] sm:hover:invert-[.75] duration-500 active:invert-[.75]"
                   />
@@ -391,20 +408,34 @@ bg-[length:200%_auto] animate-gradient pb-1 text-7xl sm:text-8xl "
               </div>
             </div>
             <div className="" ref={meRef}>
-              <GridLines
-                className="grid-area  z-[-1] bg-slate-100 rounded-3xl h-screen"
-                cellWidth={25}
-                cellWidth2={25}
-                strokeWidth={0.5}
-                strokeWidth2={0.5}
-                lineColor={"rgb(30 41 59)"}
-                lineColor2={"rgb(30 41 59)"}
-              >
-                <div className="flex flex-col justify-center items-center gap-6">
-                  <h1 className="text-black text-4xl m-2">About Me</h1>
-                  <AboutMe className=""></AboutMe>
-                </div>
-              </GridLines>
+              <div class="h-full w-full rounded-3xl bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-1">
+                <GridLines
+                  className="grid-area  z-[-1] bg-slate-100 rounded-3xl h-screen"
+                  cellWidth={20}
+                  cellWidth2={20}
+                  strokeWidth={0.5}
+                  strokeWidth2={0.5}
+                  lineColor={"rgb(30 41 59)"}
+                  lineColor2={"rgb(30 41 59)"}
+                >
+                  <div className="flex flex-col justify-center items-center gap-6">
+                    <h1 className="text-black text-4xl m-4 font-semibold">
+                      About Me
+                    </h1>
+                    <AboutMe className=""></AboutMe>
+                    <div className="flex flex-col text-black text-3xl ">
+                      <div>Hey👋 I&apos;m Subinoy</div>
+                      <div className="text-xl">
+                        <ul>
+                          <li>🚀 FullStack Developer </li>
+                          <li>✍️ Technical Content Writer </li>
+                          <li>⚙️ Community Builder</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </GridLines>
+              </div>
             </div>
           </div>
         </main>

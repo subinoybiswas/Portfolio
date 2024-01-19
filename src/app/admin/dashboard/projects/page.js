@@ -282,7 +282,7 @@ export default function Projects() {
             value={projects}
             showGridlines
             tableStyle={{ minWidth: "50rem" }}
-            className="p-4"
+            className="p4"
           >
             <Column field="title" header="Name"></Column>
             <Column field="content" header="Category"></Column>
