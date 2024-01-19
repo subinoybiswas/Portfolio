@@ -5,6 +5,7 @@ import { loadSlim } from "@tsparticles/slim";
 import Image from "next/image";
 import Link from "next/link";
 import InstaLogo from "../../public/instagram-logo.png";
+import GitHubLogo from "../../public/github-mark.png";
 import LinkedInLogo from "../../public/linkedin (1).png";
 import Project from "./project";
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
@@ -178,12 +179,12 @@ export default function Main() {
               </div>
               <div className="flex flex-row gap-4 items-center justify-center">
                 <Link
-                  href="https://www.instagram.com/biswas.subinoy"
+                  href="https://www.github.com/subinoybiswas"
                   target="_blank"
                   rel="noreferrer noopener"
                 >
                   <Image
-                    src={InstaLogo}
+                    src={GitHubLogo}
                     alt="Instagram Link"
                     className="w-[25px] invert-[.25] sm:hover:invert-[.75] duration-500 active:invert-[.75]"
                   />
@@ -218,40 +219,58 @@ export default function Main() {
                 View More
               </div>
             </ParallaxLayer>
-            <ParallaxLayer
-              offset={1}
-              className="bg-gradient-to-b from-transparent via-[#010740]/50 to-transparent z-[-1] rounded-3xl"
-              speed={0.75}
-            ></ParallaxLayer>
 
-            <ParallaxLayer offset={2} speed={1.25}>
-              <div className="">
-                <div className=" rounded-3xl  flex flex-col justify-center items-center ">
-                  <div className="sm:text-5xl text-4xl my-4 text-black">
-                    Projects
-                  </div>
-                </div>
-              </div>
-            </ParallaxLayer>
-            <ParallaxLayer offset={2.25} className="ml-5">
-              <AboutMe></AboutMe>
-            </ParallaxLayer>
             <ParallaxLayer
               offset={2}
-              className="bg-slate-800  rounded-3xl z-[-1]"
+              className="bg-slate-800  rounded-3xl "
               speed={0.75}
             >
-              <GridLines
-                className="grid-area h-[100%] z-[-1] bg-slate-100 rounded-3xl "
-                cellWidth={25}
-                cellWidth2={25}
-                strokeWidth={0.5}
-                strokeWidth2={0.5}
-                lineColor={"rgb(30 41 59)"}
-                lineColor2={"rgb(30 41 59)"}
-              >
-                <h1>Gridlines demo</h1>
-              </GridLines>
+              <div class="h-full w-full rounded-md bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-1">
+                <GridLines
+                  className="grid-area h-[100%]  bg-white rounded-3xl "
+                  cellWidth={25}
+                  cellWidth2={25}
+                  strokeWidth={0.25}
+                  strokeWidth2={0.25}
+                  lineColor={"rgb(30 41 59)"}
+                  lineColor2={"rgb(30 41 59)"}
+                ></GridLines>
+              </div>
+            </ParallaxLayer>
+            <ParallaxLayer offset={2.25} className="ml-10">
+              <AboutMe></AboutMe>
+            </ParallaxLayer>
+            <ParallaxLayer offset={2.35} speed={0.75}>
+              <div className="flex flex-col text-black text-5xl ml-[27vw]">
+                <div className="flex flex-row content-center ">
+                  <div>Hey👋 I&apos;m</div>
+                  <div
+                    className="pl-2
+                  bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500  bg-clip-text text-transparent  font-outline-2 font-semibold
+                  pb-2"
+                  >
+                    Subinoy
+                  </div>
+                </div>
+                <div className="text-xl mt-9 ml-5">
+                  <ul>
+                    <li className="mb-5">🚀 FullStack Developer </li>
+                    <li className="mb-5">✍️ Technical Content Writer </li>
+                    <li className="mb-5">⚙️ Community Builder</li>
+                  </ul>
+                  <a
+                    href="/SubinoyBiswasResume (2).pdf"
+                    download="subinoy-resume.pdf"
+                  >
+                    <button
+                      type="button"
+                      class="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+                    >
+                      Download Resume
+                    </button>
+                  </a>
+                </div>
+              </div>
             </ParallaxLayer>
           </Parallax>
         </main>
@@ -340,7 +359,7 @@ export default function Main() {
                   className="sm:hover:text-zinc-400 duration-500 active:text-zinc-400"
                   onClick={() => ScrollToMe(2)}
                 >
-                  Contact
+                  About
                 </a>
               </div>
               <div>
@@ -358,12 +377,12 @@ bg-[length:200%_auto] animate-gradient pb-1 text-7xl sm:text-8xl "
               </div>
               <div className="flex flex-row gap-4">
                 <Link
-                  href="https://www.instagram.com/biswas.subinoy"
+                  href="https://www.github.com/subinoybiswas"
                   target="_blank"
                   rel="noreferrer noopener"
                 >
                   <Image
-                    src={InstaLogo}
+                    src={GitHubLogo}
                     alt="Instagram Link"
                     className="w-[25px] invert-[.25] sm:hover:invert-[.75] duration-500 active:invert-[.75]"
                   />
@@ -391,20 +410,51 @@ bg-[length:200%_auto] animate-gradient pb-1 text-7xl sm:text-8xl "
               </div>
             </div>
             <div className="" ref={meRef}>
-              <GridLines
-                className="grid-area  z-[-1] bg-slate-100 rounded-3xl h-screen"
-                cellWidth={25}
-                cellWidth2={25}
-                strokeWidth={0.5}
-                strokeWidth2={0.5}
-                lineColor={"rgb(30 41 59)"}
-                lineColor2={"rgb(30 41 59)"}
-              >
-                <div className="flex flex-col justify-center items-center gap-6">
-                  <h1 className="text-black text-4xl m-2">About Me</h1>
-                  <AboutMe className=""></AboutMe>
-                </div>
-              </GridLines>
+              <div class="h-full w-full rounded-3xl bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-1">
+                <GridLines
+                  className="grid-area  z-[-1] bg-slate-100 rounded-3xl h-screen"
+                  cellWidth={25}
+                  cellWidth2={25}
+                  strokeWidth={0.25}
+                  strokeWidth2={0.25}
+                  lineColor={"rgb(30 41 59)"}
+                  lineColor2={"rgb(30 41 59)"}
+                >
+                  <div className="flex flex-col justify-center items-center gap-6 pt-5">
+                    <AboutMe className="pt-10"></AboutMe>
+                    <div className="flex flex-col text-black text-4xl ">
+                      <div className="flex flex-row flex-wrap gap-2">
+                        <div>Hey👋 I&apos;m</div>
+                        <div
+                          className="
+                        bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500  bg-clip-text text-transparent  font-outline-2 font-semibold
+                        pb-1"
+                        >
+                          Subinoy
+                        </div>
+                      </div>
+                      <div className="text-xl pl-5  mt-5">
+                        <ul>
+                          <li className="mb-2">🚀 FullStack Developer </li>
+                          <li className="mb-2">✍️ Technical Content Writer </li>
+                          <li className="mb-2">⚙️ Community Builder</li>
+                        </ul>
+                        <a
+                          href="/SubinoyBiswasResume (2).pdf"
+                          download="subinoy-resume.pdf"
+                        >
+                          <button
+                            type="button"
+                            class="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+                          >
+                            Download Resume
+                          </button>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </GridLines>
+              </div>
             </div>
           </div>
         </main>
