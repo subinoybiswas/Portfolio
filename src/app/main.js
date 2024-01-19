@@ -240,7 +240,7 @@ export default function Main() {
             <ParallaxLayer offset={2.25} className="ml-10">
               <AboutMe></AboutMe>
             </ParallaxLayer>
-            <ParallaxLayer offset={2.35} speed={0.75} >
+            <ParallaxLayer offset={2.35} speed={0.75}>
               <div className="flex flex-col text-black text-5xl ml-[360px]">
                 <div className="flex flex-row content-center ">
                   Hey👋 I&apos;m
