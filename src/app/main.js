@@ -238,20 +238,20 @@ export default function Main() {
                 </div>
               </div>
             </ParallaxLayer>
-            <ParallaxLayer offset={2.15} speed={0.75}>
-              <div className="flex flex-col text-black text-3xl ml-80">
+            <ParallaxLayer offset={2.35} speed={0.75}>
+              <div className="flex flex-col text-black text-5xl ml-[27vw]">
                 <div>Hey👋 I&apos;m Subinoy</div>
-                <div className="text-xl">
+                <div className="text-xl mt-9 ml-5">
                   <ul>
-                    <li>🚀 FullStack Developer </li>
-                    <li>✍️ Technical Content Writer </li>
-                    <li>⚙️ Community Builder</li>
+                    <li className="mb-5">🚀 FullStack Developer </li>
+                    <li className="mb-5">✍️ Technical Content Writer </li>
+                    <li className="mb-5">⚙️ Community Builder</li>
                   </ul>
                 </div>
               </div>
             </ParallaxLayer>
-            <ParallaxLayer offset={2.25} className="ml-5">
-              <AboutMe></AboutMe>
+            <ParallaxLayer offset={2.25} className="ml-10">
+              <AboutMe ></AboutMe>
             </ParallaxLayer>
             <ParallaxLayer
               offset={2}
@@ -411,8 +411,8 @@ bg-[length:200%_auto] animate-gradient pb-1 text-7xl sm:text-8xl "
               <div class="h-full w-full rounded-3xl bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-1">
                 <GridLines
                   className="grid-area  z-[-1] bg-slate-100 rounded-3xl h-screen"
-                  cellWidth={20}
-                  cellWidth2={20}
+                  cellWidth={25}
+                  cellWidth2={25}
                   strokeWidth={0.5}
                   strokeWidth2={0.5}
                   lineColor={"rgb(30 41 59)"}
@@ -423,13 +423,13 @@ bg-[length:200%_auto] animate-gradient pb-1 text-7xl sm:text-8xl "
                       About Me
                     </h1>
                     <AboutMe className=""></AboutMe>
-                    <div className="flex flex-col text-black text-3xl ">
+                    <div className="flex flex-col text-black text-4xl ">
                       <div>Hey👋 I&apos;m Subinoy</div>
-                      <div className="text-xl">
+                      <div className="text-xl pl-5  mt-5">
                         <ul>
-                          <li>🚀 FullStack Developer </li>
-                          <li>✍️ Technical Content Writer </li>
-                          <li>⚙️ Community Builder</li>
+                          <li className="mb-2">🚀 FullStack Developer </li>
+                          <li className="mb-2">✍️ Technical Content Writer </li>
+                          <li className="mb-2">⚙️ Community Builder</li>
                         </ul>
                       </div>
                     </div>
