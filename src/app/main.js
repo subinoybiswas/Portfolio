@@ -161,7 +161,7 @@ export default function Main() {
                   className="sm:hover:text-zinc-400 duration-500 active:text-zinc-400"
                   onClick={() => ScrollToMe(1)}
                 >
-                  Contact
+                  About
                 </div>
               </div>
               <div>
