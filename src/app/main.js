@@ -248,9 +248,9 @@ export default function Main() {
             </ParallaxLayer>
 
             <ParallaxLayer offset={2.35} speed={0.75}>
-              <div className="flex flex-row text-black text-5xl ml-[360px] gap-[80px]">
+              <div className="flex flex-row text-black text-3xl  md:text-5xl ml-[360px] gap-[80px]">
                 <div>
-                  <div className="flex flex-row content-center ">
+                  <div className="flex ">
                     Hey👋 I&apos;m
                     <div
                       className="pl-2
@@ -299,6 +299,8 @@ export default function Main() {
                     shadow-intensity="1"
                     ar-status="not-presenting"
                     autoplay=""
+                    camera-orbit="8.391deg 76.6deg 10.16m"
+                    field-of-view="30deg"
                   ></model-viewer>
                 </div>
               </div>
@@ -452,7 +454,7 @@ bg-[length:200%_auto] animate-gradient pb-1 text-7xl sm:text-8xl "
                 <div className="text-left flex-grow" ref={meRef}>
                   <div class="h-full w-full rounded-3xl bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-1">
                     <GridLines
-                      className="grid-area  z-[-1] bg-slate-100 rounded-3xl h-screen"
+                      className="grid-area  z-[-1] bg-slate-100 rounded-3xl "
                       cellWidth={25}
                       cellWidth2={25}
                       strokeWidth={0.25}
@@ -492,6 +494,27 @@ bg-[length:200%_auto] animate-gradient pb-1 text-7xl sm:text-8xl "
                                 Download Resume
                               </button>
                             </a>
+                            <model-viewer
+                              src="https://modelviewer.dev/shared-assets/models/RobotExpressive.glb"
+                              ar=""
+                              ar-modes="webxr"
+                              camera-controls=""
+                              disable-zoom
+                              disable-pan
+                              disable-tap
+                              tone-mapping="commerce"
+                              interaction-prompt="none"
+                              shadow-intensity="1"
+                              ar-status="not-presenting"
+                              autoplay=""
+                              field-of-view="30deg"
+                            ></model-viewer>
+                            <div className="flex flex-row gap-x-2 justify-center m-2">
+                              <SocialIcon url="www.github.com/subinoybiswas" />
+                              <SocialIcon url="www.twitter.com/heysubinoy" />
+                              <SocialIcon url="www.instagram.com/biswas.subinoy" />
+                              <SocialIcon url="mailto:heysubinoy@gmail.com" />
+                            </div>
                           </div>
                         </div>
                       </div>
