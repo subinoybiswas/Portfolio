@@ -73,6 +73,7 @@ export default function Projects() {
           "Content-Type": "application/json",
         },
       });
+      setFormData({ title: "", content: "", githublink: "", weblink: "" });
       closeModal();
       toast.success("Added Project!", {
         position: "bottom-right",
@@ -136,7 +137,7 @@ export default function Projects() {
       // console.log(projectId);
       const response = await axios.get(`/api/create-project/${projectId}`);
       setCurrentProject(response.data.projects[0]);
-      console.log(response.data.projects);
+      // console.log(response.data.projects);
       setModal(1);
     } catch (error) {
       console.error("Error editing project:", error);
@@ -150,6 +151,12 @@ export default function Projects() {
         `/api/create-project/${projectId}`,
         current_project
       );
+      setCurrentProject({
+        title: "",
+        content: "",
+        githublink: "",
+        weblink: "",
+      });
       closeModal();
       fetchProjects();
       toast.warn("Edited Project!", {

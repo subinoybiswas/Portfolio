@@ -70,7 +70,7 @@ export default function Skleton() {
             <div className="animate-pulse w-[40%] h-[40%] bg-slate-800 rounded-full mb-5"></div>
 
             {/* Placeholder for text */}
-            <div className="animate-pulse w-full h-4 bg-slate-800 rounded-full mb-2"></div>
+            <div className="animate-pulse w-[90vw] md:w-full h-4 bg-slate-800 rounded-full mb-2"></div>
             <div className="animate-pulse w-3/4 h-4 bg-slate-800 rounded-full mb-5"></div>
 
             {/* Placeholder for button */}
