@@ -16,8 +16,10 @@ import {
   isBrowser,
   isMobile,
 } from "react-device-detect";
+import "@google/model-viewer";
 import AboutMe from "./aboutme";
 import GridLines from "react-gridlines";
+import { SocialIcon } from "react-social-icons";
 export default function Main() {
   const [init, setInit] = useState(false);
   const particlesLoaded = (container) => {
@@ -234,42 +236,82 @@ export default function Main() {
                   strokeWidth2={0.25}
                   lineColor={"rgb(30 41 59)"}
                   lineColor2={"rgb(30 41 59)"}
-                ></GridLines>
+                >
+                  <div className="flex flex-row gap-x-2 p-2 justify-end">
+                    <SocialIcon url="www.github.com/subinoybiswas" />
+                    <SocialIcon url="www.twitter.com/heysubinoy" />
+                    <SocialIcon url="www.instagram.com/biswas.subinoy" />
+                    <SocialIcon url="mailto:heysubinoy@gmail.com" />
+                  </div>
+                </GridLines>
               </div>
             </ParallaxLayer>
-            <ParallaxLayer offset={2.25} className="ml-10">
-              <AboutMe></AboutMe>
-            </ParallaxLayer>
+
             <ParallaxLayer offset={2.35} speed={0.75}>
-              <div className="flex flex-col text-black text-5xl ml-[360px]">
-                <div className="flex flex-row content-center ">
-                  Hey👋 I&apos;m
-                  <div
-                    className="pl-2
+              <div className="flex flex-row text-black text-3xl  md:text-5xl ml-[360px] gap-[80px]">
+                <div>
+                  <div className="flex ">
+                    Hey👋 I&apos;m
+                    <div
+                      className="pl-2
                   bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500  bg-clip-text text-transparent  font-outline-2 font-semibold
                   pb-2"
-                  >
-                    Subinoy
+                    >
+                      Subinoy
+                    </div>
+                  </div>
+                  <div className="text-xl mt-9 ml-5">
+                    <ul>
+                      <li className="mb-5">🚀 Full Stack Developer </li>
+                      <li className="mb-5">✍️ Technical Content Writer </li>
+                      <li className="mb-5">⚙️ Community Builder</li>
+                    </ul>
+                    <a
+                      href="/SubinoyResume.pdf"
+                      download="subinoy-resume.pdf"
+                      className="mt-5"
+                    >
+                      <button
+                        type="button"
+                        class="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+                      >
+                        Download Resume
+                      </button>
+                    </a>
                   </div>
                 </div>
-                <div className="text-xl mt-9 ml-5">
-                  <ul>
-                    <li className="mb-5">🚀 FullStack Developer </li>
-                    <li className="mb-5">✍️ Technical Content Writer </li>
-                    <li className="mb-5">⚙️ Community Builder</li>
-                  </ul>
-                  <a
-                    href="/SubinoyBiswasResume (2).pdf"
-                    download="subinoy-resume.pdf"
-                  >
-                    <button
-                      type="button"
-                      class="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
-                    >
-                      Download Resume
-                    </button>
-                  </a>
+                <div className="lg:flex  hidden">
+                  <model-viewer
+                    style={{
+                      width: "400px",
+                      height: "350px",
+                      marginBottom: "20px",
+                    }}
+                    src="https://modelviewer.dev/shared-assets/models/RobotExpressive.glb"
+                    ar=""
+                    ar-modes="webxr scene-viewer quick-look"
+                    camera-controls=""
+                    disable-zoom
+                    disable-pan
+                    disable-tap
+                    tone-mapping="commerce"
+                    interaction-prompt="none"
+                    shadow-intensity="1"
+                    ar-status="not-presenting"
+                    autoplay=""
+                    camera-orbit="8.391deg 76.6deg 10.16m"
+                    field-of-view="30deg"
+                  ></model-viewer>
                 </div>
+              </div>
+            </ParallaxLayer>
+            <ParallaxLayer
+              offset={2.25}
+              className="ml-10 "
+              style={{ width: "270px" }}
+            >
+              <div className="flex flex-col w-[270px] items-center  ">
+                <AboutMe></AboutMe>
               </div>
             </ParallaxLayer>
           </Parallax>
@@ -412,7 +454,7 @@ bg-[length:200%_auto] animate-gradient pb-1 text-7xl sm:text-8xl "
                 <div className="text-left flex-grow" ref={meRef}>
                   <div class="h-full w-full rounded-3xl bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-1">
                     <GridLines
-                      className="grid-area  z-[-1] bg-slate-100 rounded-3xl h-screen"
+                      className="grid-area  z-[-1] bg-slate-100 rounded-3xl "
                       cellWidth={25}
                       cellWidth2={25}
                       strokeWidth={0.25}
@@ -435,14 +477,14 @@ bg-[length:200%_auto] animate-gradient pb-1 text-7xl sm:text-8xl "
                           </div>
                           <div className="text-xl pl-5  mt-5">
                             <ul>
-                              <li className="mb-2">🚀 FullStack Developer </li>
+                              <li className="mb-2">🚀 Full Stack Developer </li>
                               <li className="mb-2">
                                 ✍️ Technical Content Writer{" "}
                               </li>
                               <li className="mb-2">⚙️ Community Builder</li>
                             </ul>
                             <a
-                              href="/SubinoyBiswasResume (2).pdf"
+                              href="/SubinoyResume.pdf"
                               download="subinoy-resume.pdf"
                             >
                               <button
@@ -452,6 +494,27 @@ bg-[length:200%_auto] animate-gradient pb-1 text-7xl sm:text-8xl "
                                 Download Resume
                               </button>
                             </a>
+                            <model-viewer
+                              src="https://modelviewer.dev/shared-assets/models/RobotExpressive.glb"
+                              ar=""
+                              ar-modes="webxr"
+                              camera-controls=""
+                              disable-zoom
+                              disable-pan
+                              disable-tap
+                              tone-mapping="commerce"
+                              interaction-prompt="none"
+                              shadow-intensity="1"
+                              ar-status="not-presenting"
+                              autoplay=""
+                              field-of-view="30deg"
+                            ></model-viewer>
+                            <div className="flex flex-row gap-x-2 justify-center m-2">
+                              <SocialIcon url="www.github.com/subinoybiswas" />
+                              <SocialIcon url="www.twitter.com/heysubinoy" />
+                              <SocialIcon url="www.instagram.com/biswas.subinoy" />
+                              <SocialIcon url="mailto:heysubinoy@gmail.com" />
+                            </div>
                           </div>
                         </div>
                       </div>
