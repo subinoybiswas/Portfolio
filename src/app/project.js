@@ -17,11 +17,11 @@ export default function Project() {
       });
   }, []);
   return !isLoading ? (
-    <div className="flex flex-col flex-wrap lg:flex-row my-4 items-center justify-center">
+    <div className="flex flex-col flex-wrap  xl:flex-row my-4 items-center justify-center">
       {data.map((item) => (
         <Spotlight
           key={item.id}
-          className="max-w-sm  mx-2  flex-wrap  lg:max-w-none group mb-4"
+          className="max-w-sm  mx-2  flex-wrap  lg:max-w-none group mb-4 min-w-[250px]"
         >
           <SpotlightCard>
             <div className="relative h-full bg-[#0f172a] p-6 pb-8 rounded-[inherit] z-20 overflow-hidden">

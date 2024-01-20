@@ -161,7 +161,7 @@ export default function Main() {
                   className="sm:hover:text-zinc-400 duration-500 active:text-zinc-400"
                   onClick={() => ScrollToMe(1)}
                 >
-                  Contact
+                  About
                 </div>
               </div>
               <div>
@@ -241,9 +241,9 @@ export default function Main() {
               <AboutMe></AboutMe>
             </ParallaxLayer>
             <ParallaxLayer offset={2.35} speed={0.75}>
-              <div className="flex flex-col text-black text-5xl ml-[27vw]">
+              <div className="flex flex-col text-black text-5xl ml-[360px]">
                 <div className="flex flex-row content-center ">
-                  <div>Hey👋 I&apos;m</div>
+                  Hey👋 I&apos;m
                   <div
                     className="pl-2
                   bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500  bg-clip-text text-transparent  font-outline-2 font-semibold
@@ -280,7 +280,7 @@ export default function Main() {
             className=" select-none bg-gradient-to-bl
     from-[#000103] via-zinc-600/20 to-[#010610] "
           >
-            <div className="h-[100vh] flex flex-col  justify-center items-center p-24 text-center sm:w-auto w-screen">
+            <div className=" flex flex-col  justify-center items-center  text-center sm:w-auto w-screen">
               {init && (
                 <Particles
                   className="z-[-1] "
@@ -348,7 +348,7 @@ export default function Main() {
                   }}
                 />
               )}
-              <div className="  flex  flex-row justify-center text-center sm:gap-4 gap-2 item-center my-5 sm:my-10 text-lg sm:text-lg text-zinc-600">
+              <div className=" mt-[35vh] flex  flex-row justify-center text-center sm:gap-4 gap-2 item-center my-5 sm:my-10 text-lg sm:text-lg text-zinc-600">
                 <a
                   className="sm:hover:text-zinc-400 duration-500 active:text-zinc-400"
                   onClick={() => ScrollToProject(2)}
@@ -399,61 +399,65 @@ bg-[length:200%_auto] animate-gradient pb-1 text-7xl sm:text-8xl "
                   />
                 </Link>
               </div>
-            </div>
-            <div className="" ref={projectRef}>
-              <div className="flex flex-col text-center items-center justify-center text-4xl mb-4">
-                Projects
-              </div>
-              <Project></Project>
-              <div className="animate-bounce flex flex-col justify-center items-center py-6">
-                View More
-              </div>
-            </div>
-            <div className="" ref={meRef}>
-              <div class="h-full w-full rounded-3xl bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-1">
-                <GridLines
-                  className="grid-area  z-[-1] bg-slate-100 rounded-3xl h-screen"
-                  cellWidth={25}
-                  cellWidth2={25}
-                  strokeWidth={0.25}
-                  strokeWidth2={0.25}
-                  lineColor={"rgb(30 41 59)"}
-                  lineColor2={"rgb(30 41 59)"}
-                >
-                  <div className="flex flex-col justify-center items-center gap-6 pt-5">
-                    <AboutMe className="pt-10"></AboutMe>
-                    <div className="flex flex-col text-black text-4xl ">
-                      <div className="flex flex-row flex-wrap gap-2">
-                        <div>Hey👋 I&apos;m</div>
-                        <div
-                          className="
+              <div className="p-0 m-0">
+                <div className="w-screen mt-[30vh]" ref={projectRef}>
+                  <div className="flex flex-col text-center items-center justify-center text-4xl mb-4">
+                    Projects
+                  </div>
+                  <Project></Project>
+                  <div className="animate-bounce flex flex-col justify-center items-center py-6">
+                    View More
+                  </div>
+                </div>
+                <div className="text-left flex-grow" ref={meRef}>
+                  <div class="h-full w-full rounded-3xl bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-1">
+                    <GridLines
+                      className="grid-area  z-[-1] bg-slate-100 rounded-3xl h-screen"
+                      cellWidth={25}
+                      cellWidth2={25}
+                      strokeWidth={0.25}
+                      strokeWidth2={0.25}
+                      lineColor={"rgb(30 41 59)"}
+                      lineColor2={"rgb(30 41 59)"}
+                    >
+                      <div className="flex flex-col sm:flex-row justify-center items-center gap-6 pt-5">
+                        <AboutMe className="pt-10"></AboutMe>
+                        <div className="flex flex-col text-black text-4xl ">
+                          <div className="flex flex-row flex-wrap gap-2">
+                            <div>Hey👋 I&apos;m</div>
+                            <div
+                              className="
                         bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500  bg-clip-text text-transparent  font-outline-2 font-semibold
                         pb-1"
-                        >
-                          Subinoy
+                            >
+                              Subinoy
+                            </div>
+                          </div>
+                          <div className="text-xl pl-5  mt-5">
+                            <ul>
+                              <li className="mb-2">🚀 FullStack Developer </li>
+                              <li className="mb-2">
+                                ✍️ Technical Content Writer{" "}
+                              </li>
+                              <li className="mb-2">⚙️ Community Builder</li>
+                            </ul>
+                            <a
+                              href="/SubinoyBiswasResume (2).pdf"
+                              download="subinoy-resume.pdf"
+                            >
+                              <button
+                                type="button"
+                                class="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+                              >
+                                Download Resume
+                              </button>
+                            </a>
+                          </div>
                         </div>
                       </div>
-                      <div className="text-xl pl-5  mt-5">
-                        <ul>
-                          <li className="mb-2">🚀 FullStack Developer </li>
-                          <li className="mb-2">✍️ Technical Content Writer </li>
-                          <li className="mb-2">⚙️ Community Builder</li>
-                        </ul>
-                        <a
-                          href="/SubinoyBiswasResume (2).pdf"
-                          download="subinoy-resume.pdf"
-                        >
-                          <button
-                            type="button"
-                            class="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
-                          >
-                            Download Resume
-                          </button>
-                        </a>
-                      </div>
-                    </div>
+                    </GridLines>
                   </div>
-                </GridLines>
+                </div>
               </div>
             </div>
           </div>
