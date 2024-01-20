@@ -18,6 +18,7 @@ import {
 } from "react-device-detect";
 import AboutMe from "./aboutme";
 import GridLines from "react-gridlines";
+import { SocialIcon } from "react-social-icons";
 export default function Main() {
   const [init, setInit] = useState(false);
   const particlesLoaded = (container) => {
@@ -266,6 +267,11 @@ export default function Main() {
                       Download Resume
                     </button>
                   </a>
+                  <div className="flex flex-row gap-x-2">
+                    <SocialIcon url="www.github.com/subinoybiswas" />
+                    <SocialIcon url="www.twitter.com/heysubinoy" />
+                    <SocialIcon url="www.instagram.com/biswas.subinoy" />
+                  </div>
                 </div>
               </div>
             </ParallaxLayer>
