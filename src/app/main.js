@@ -16,6 +16,7 @@ import {
   isBrowser,
   isMobile,
 } from "react-device-detect";
+import "@google/model-viewer";
 import AboutMe from "./aboutme";
 import GridLines from "react-gridlines";
 import { SocialIcon } from "react-social-icons";
@@ -247,35 +248,58 @@ export default function Main() {
             </ParallaxLayer>
 
             <ParallaxLayer offset={2.35} speed={0.75}>
-              <div className="flex flex-col text-black text-5xl ml-[360px]">
-                <div className="flex flex-row content-center ">
-                  Hey👋 I&apos;m
-                  <div
-                    className="pl-2
+              <div className="flex flex-row text-black text-5xl ml-[360px] gap-[80px]">
+                <div>
+                  <div className="flex flex-row content-center ">
+                    Hey👋 I&apos;m
+                    <div
+                      className="pl-2
                   bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500  bg-clip-text text-transparent  font-outline-2 font-semibold
                   pb-2"
-                  >
-                    Subinoy
+                    >
+                      Subinoy
+                    </div>
+                  </div>
+                  <div className="text-xl mt-9 ml-5">
+                    <ul>
+                      <li className="mb-5">🚀 FullStack Developer </li>
+                      <li className="mb-5">✍️ Technical Content Writer </li>
+                      <li className="mb-5">⚙️ Community Builder</li>
+                    </ul>
+                    <a
+                      href="/SubinoyResume.pdf"
+                      download="subinoy-resume.pdf"
+                      className="mt-5"
+                    >
+                      <button
+                        type="button"
+                        class="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+                      >
+                        Download Resume
+                      </button>
+                    </a>
                   </div>
                 </div>
-                <div className="text-xl mt-9 ml-5">
-                  <ul>
-                    <li className="mb-5">🚀 FullStack Developer </li>
-                    <li className="mb-5">✍️ Technical Content Writer </li>
-                    <li className="mb-5">⚙️ Community Builder</li>
-                  </ul>
-                  <a
-                    href="/SubinoyResume.pdf"
-                    download="subinoy-resume.pdf"
-                    className="mt-5"
-                  >
-                    <button
-                      type="button"
-                      class="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
-                    >
-                      Download Resume
-                    </button>
-                  </a>
+                <div className="lg:flex  hidden">
+                  <model-viewer
+                    style={{
+                      width: "400px",
+                      height: "350px",
+                      marginBottom: "20px",
+                    }}
+                    src="https://modelviewer.dev/shared-assets/models/RobotExpressive.glb"
+                    ar=""
+                    ar-modes="webxr scene-viewer quick-look"
+                    camera-controls=""
+                    disable-zoom
+                    disable-pan
+                    disable-tap
+                    tone-mapping="commerce"
+                    interaction-prompt="none"
+                    shadow-intensity="1"
+                    ar-status="not-presenting"
+                    autoplay=""
+                  ></model-viewer>
                 </div>
               </div>
             </ParallaxLayer>
