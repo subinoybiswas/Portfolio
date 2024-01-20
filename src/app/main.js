@@ -223,7 +223,7 @@ export default function Main() {
                 className="animate-bounce flex flex-col justify-center items-center pt-4 text-xl"
                 onClick={() => push("/Projects")}
               >
-                View More
+                View All
               </div>
             </ParallaxLayer>
 
@@ -253,19 +253,14 @@ export default function Main() {
             </ParallaxLayer>
 
             <ParallaxLayer offset={2.35} speed={0.75}>
-              <div className="flex flex-row text-black text-3xl  md:text-5xl ml-[360px] gap-[80px]">
+              <div className="flex flex-row text-black text-3xl  md:text-4xl lg:text-5xl ml-[370px] gap-[80px]">
                 <div>
-                  <div className="flex ">
-                    Hey👋 I&apos;m
-                    <div
-                      className="pl-2
-                  bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500  bg-clip-text text-transparent  font-outline-2 font-semibold
-                  pb-2"
-                    >
-                      Subinoy
-                    </div>
+                  <div style={{ display: "inline-block" }}>Hey👋 I&apos;m</div>
+                  <div className="pl-2 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 bg-clip-text text-transparent font-outline-2 font-semibold pb-2 inline-block">
+                    Subinoy
                   </div>
-                  <div className="text-xl mt-9 ml-5">
+
+                  <div className=" text-lg md:text-xl mt-9 ml-5">
                     <ul>
                       <li className="mb-5">🚀 Full Stack Developer </li>
                       <li className="mb-5">✍️ Technical Content Writer </li>
@@ -288,7 +283,7 @@ export default function Main() {
                 <div className="lg:flex  hidden">
                   <model-viewer
                     style={{
-                      width: "400px",
+                      width: "450px",
                       height: "350px",
                       marginBottom: "20px",
                     }}
@@ -453,10 +448,10 @@ bg-[length:200%_auto] animate-gradient pb-1 text-7xl sm:text-8xl "
                   </div>
                   <Project></Project>
                   <div
-                    className="animate-bounce flex flex-col justify-center items-center py-6 text-xl"
+                    className="animate-bounce flex flex-col justify-center items-center py-6 text-2xl"
                     onClick={() => push("/Projects")}
                   >
-                    View More
+                    View All
                   </div>
                 </div>
                 <div className="text-left flex-grow" ref={meRef}>
@@ -470,10 +465,10 @@ bg-[length:200%_auto] animate-gradient pb-1 text-7xl sm:text-8xl "
                       lineColor={"rgb(30 41 59)"}
                       lineColor2={"rgb(30 41 59)"}
                     >
-                      <div className="flex flex-col sm:flex-row justify-center items-center gap-6 pt-5">
-                        <AboutMe className="pt-10"></AboutMe>
-                        <div className="flex flex-col text-black text-4xl ">
-                          <div className="flex flex-row flex-wrap gap-2">
+                      <div className="flex flex-col sm:flex-row justify-center items-center gap-9 pt-5">
+                        <AboutMe className="p-10"></AboutMe>
+                        <div className="flex flex-col text-black text-4xl  ">
+                          <div className="flex flex-row flex-wrap gap-2 text-center justify-center">
                             <div>Hey👋 I&apos;m</div>
                             <div
                               className="
@@ -489,11 +484,12 @@ bg-[length:200%_auto] animate-gradient pb-1 text-7xl sm:text-8xl "
                               <li className="mb-2">
                                 ✍️ Technical Content Writer{" "}
                               </li>
-                              <li className="mb-2">⚙️ Community Builder</li>
+                              <li className="mb-5">⚙️ Community Builder</li>
                             </ul>
                             <a
                               href="/SubinoyResume.pdf"
                               download="subinoy-resume.pdf"
+                              className="mb-5"
                             >
                               <button
                                 type="button"
@@ -517,7 +513,7 @@ bg-[length:200%_auto] animate-gradient pb-1 text-7xl sm:text-8xl "
                               autoplay=""
                               field-of-view="30deg"
                             ></model-viewer>
-                            <div className="flex flex-row gap-x-2 justify-center m-2">
+                            <div className="flex flex-row gap-x-2 justify-center m-4">
                               <SocialIcon url="www.github.com/subinoybiswas" />
                               <SocialIcon url="www.twitter.com/heysubinoy" />
                               <SocialIcon url="www.instagram.com/biswas.subinoy" />

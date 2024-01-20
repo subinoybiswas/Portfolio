@@ -3,22 +3,30 @@ import { SpotlightCard } from "./spotlight";
 import { useEffect, useState } from "react";
 import Skleton from "./skleton";
 import Image from "next/image";
+import {
+  BrowserView,
+  MobileView,
+  isBrowser,
+  isMobile,
+} from "react-device-detect";
 export default function Project() {
   const [data, setData] = useState(null);
   const [isLoading, setLoading] = useState(true);
-
   useEffect(() => {
     fetch("/api/get-projects", { method: "POST" })
       .then((res) => res.json())
-      .then((data) => {
-        setData(data.projects);
+      .then((rdata) => {
+        setData(rdata.projects);
         setLoading(false);
+
         // console.log(data);
       });
   }, []);
+  const maxProjects = isMobile ? 3 : 6;
+  const projectsToRender = data ? data.slice(0, maxProjects) : [];
   return !isLoading ? (
     <div className="flex flex-col flex-wrap  xl:flex-row my-4 items-center justify-center">
-      {data.map((item) => (
+      {projectsToRender.map((item) => (
         <Spotlight
           key={item.id}
           className="max-w-sm  mx-2  flex-wrap  lg:max-w-none group mb-4 min-w-[250px]"
