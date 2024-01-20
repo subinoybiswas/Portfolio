@@ -235,7 +235,14 @@ export default function Main() {
                   strokeWidth2={0.25}
                   lineColor={"rgb(30 41 59)"}
                   lineColor2={"rgb(30 41 59)"}
-                ></GridLines>
+                >
+                  <div className="flex flex-row gap-x-2 p-2 justify-end">
+                    <SocialIcon url="www.github.com/subinoybiswas" />
+                    <SocialIcon url="www.twitter.com/heysubinoy" />
+                    <SocialIcon url="www.instagram.com/biswas.subinoy" />
+                    <SocialIcon url="mailto:heysubinoy@gmail.com" />
+                  </div>
+                </GridLines>
               </div>
             </ParallaxLayer>
             <ParallaxLayer offset={2.25} className="ml-10">
@@ -267,11 +274,6 @@ export default function Main() {
                       Download Resume
                     </button>
                   </a>
-                  <div className="flex flex-row gap-x-2">
-                    <SocialIcon url="www.github.com/subinoybiswas" />
-                    <SocialIcon url="www.twitter.com/heysubinoy" />
-                    <SocialIcon url="www.instagram.com/biswas.subinoy" />
-                  </div>
                 </div>
               </div>
             </ParallaxLayer>
