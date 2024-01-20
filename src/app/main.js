@@ -258,10 +258,7 @@ export default function Main() {
                     <li className="mb-5">✍️ Technical Content Writer </li>
                     <li className="mb-5">⚙️ Community Builder</li>
                   </ul>
-                  <a
-                    href="/SubinoyBiswasResume (2).pdf"
-                    download="subinoy-resume.pdf"
-                  >
+                  <a href="/SubinoyResume.pdf" download="subinoy-resume.pdf">
                     <button
                       type="button"
                       class="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
@@ -442,7 +439,7 @@ bg-[length:200%_auto] animate-gradient pb-1 text-7xl sm:text-8xl "
                               <li className="mb-2">⚙️ Community Builder</li>
                             </ul>
                             <a
-                              href="/SubinoyBiswasResume (2).pdf"
+                              href="/SubinoyResume.pdf"
                               download="subinoy-resume.pdf"
                             >
                               <button
