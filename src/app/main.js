@@ -262,7 +262,7 @@ export default function Main() {
                   </div>
                   <div className="text-xl mt-9 ml-5">
                     <ul>
-                      <li className="mb-5">🚀 FullStack Developer </li>
+                      <li className="mb-5">🚀 Full Stack Developer </li>
                       <li className="mb-5">✍️ Technical Content Writer </li>
                       <li className="mb-5">⚙️ Community Builder</li>
                     </ul>
@@ -475,7 +475,7 @@ bg-[length:200%_auto] animate-gradient pb-1 text-7xl sm:text-8xl "
                           </div>
                           <div className="text-xl pl-5  mt-5">
                             <ul>
-                              <li className="mb-2">🚀 FullStack Developer </li>
+                              <li className="mb-2">🚀 Full Stack Developer </li>
                               <li className="mb-2">
                                 ✍️ Technical Content Writer{" "}
                               </li>
