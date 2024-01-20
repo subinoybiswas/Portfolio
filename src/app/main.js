@@ -245,9 +245,7 @@ export default function Main() {
                 </GridLines>
               </div>
             </ParallaxLayer>
-            <ParallaxLayer offset={2.25} className="ml-10">
-              <AboutMe></AboutMe>
-            </ParallaxLayer>
+
             <ParallaxLayer offset={2.35} speed={0.75}>
               <div className="flex flex-col text-black text-5xl ml-[360px]">
                 <div className="flex flex-row content-center ">
@@ -266,7 +264,11 @@ export default function Main() {
                     <li className="mb-5">✍️ Technical Content Writer </li>
                     <li className="mb-5">⚙️ Community Builder</li>
                   </ul>
-                  <a href="/SubinoyResume.pdf" download="subinoy-resume.pdf">
+                  <a
+                    href="/SubinoyResume.pdf"
+                    download="subinoy-resume.pdf"
+                    className="mt-5"
+                  >
                     <button
                       type="button"
                       class="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
@@ -275,6 +277,15 @@ export default function Main() {
                     </button>
                   </a>
                 </div>
+              </div>
+            </ParallaxLayer>
+            <ParallaxLayer
+              offset={2.25}
+              className="ml-10 "
+              style={{ width: "270px" }}
+            >
+              <div className="flex flex-col w-[270px] items-center  ">
+                <AboutMe></AboutMe>
               </div>
             </ParallaxLayer>
           </Parallax>
