@@ -40,28 +40,41 @@ export default function Project() {
                   <p className="text-sm text-slate-500 ">{item.content}</p>
                 </div>
                 <div className="flex flex-row gap-2">
-                  <a
-                    className="inline-flex justify-center rounded-full items-center whitespace-nowrap bg-slate-400 hover:bg-slate-900 border border-slate-700 p-2 text-sm font-medium text-slate-300 focus-visible:outline-none focus-visible:ring focus-visible:ring-indigo-300 dark:focus-visible:ring-slate-600 transition-colors duration-150"
-                    href={item.githublink}
-                  >
-                    <Image
-                      src="/github-mark.svg"
-                      alt="GitHub Link"
-                      height="20"
-                      width="20"
-                    ></Image>
-                  </a>
-                  <a
-                    className="inline-flex justify-center rounded-full items-center whitespace-nowrap bg-slate-400 hover:bg-slate-900 border border-slate-700 p-2 text-sm font-medium text-slate-300 focus-visible:outline-none focus-visible:ring focus-visible:ring-indigo-300 dark:focus-visible:ring-slate-600 transition-colors duration-150"
-                    href={item.weblink || "#"}
-                  >
-                    <Image
-                      src="/web.svg"
-                      alt="Web Link"
-                      height="20"
-                      width="20"
-                    ></Image>
-                  </a>
+                  {item.githublink ? (
+                    <a
+                      className="inline-flex justify-center rounded-full items-center whitespace-nowrap bg-slate-400 hover:bg-slate-900 border border-slate-700 p-2 text-sm font-medium text-slate-300 focus-visible:outline-none focus-visible:ring focus-visible:ring-indigo-300 dark:focus-visible:ring-slate-600 transition-colors duration-150"
+                      href={item.githublink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Image
+                        src="/github-mark.svg"
+                        alt="GitHub Link"
+                        height="20"
+                        width="20"
+                      ></Image>
+                    </a>
+                  ) : (
+                    <></>
+                  )}
+
+                  {item.weblink ? (
+                    <a
+                      className="inline-flex justify-center rounded-full items-center whitespace-nowrap bg-slate-400 hover:bg-slate-900 border border-slate-700 p-2 text-sm font-medium text-slate-300 focus-visible:outline-none focus-visible:ring focus-visible:ring-indigo-300 dark:focus-visible:ring-slate-600 transition-colors duration-150"
+                      href={item.weblink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Image
+                        src="/web.svg"
+                        alt="Web Link"
+                        height="20"
+                        width="20"
+                      ></Image>
+                    </a>
+                  ) : (
+                    <></>
+                  )}
                 </div>
               </div>
             </div>

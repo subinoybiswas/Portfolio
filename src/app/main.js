@@ -20,7 +20,9 @@ import "@google/model-viewer";
 import AboutMe from "./aboutme";
 import GridLines from "react-gridlines";
 import { SocialIcon } from "react-social-icons";
+import { useRouter } from "next/navigation";
 export default function Main() {
+  const { push } = useRouter();
   const [init, setInit] = useState(false);
   const particlesLoaded = (container) => {
     console.log(container);
@@ -217,7 +219,10 @@ export default function Main() {
               className="justify-center items-center"
             >
               <Project></Project>
-              <div className="animate-bounce flex flex-col justify-center items-center pt-4">
+              <div
+                className="animate-bounce flex flex-col justify-center items-center pt-4 text-xl"
+                onClick={() => push("/Projects")}
+              >
                 View More
               </div>
             </ParallaxLayer>
@@ -447,7 +452,10 @@ bg-[length:200%_auto] animate-gradient pb-1 text-7xl sm:text-8xl "
                     Projects
                   </div>
                   <Project></Project>
-                  <div className="animate-bounce flex flex-col justify-center items-center py-6">
+                  <div
+                    className="animate-bounce flex flex-col justify-center items-center py-6 text-xl"
+                    onClick={() => push("/Projects")}
+                  >
                     View More
                   </div>
                 </div>
