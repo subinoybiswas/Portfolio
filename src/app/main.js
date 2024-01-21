@@ -220,7 +220,7 @@ export default function Main() {
             >
               <Project></Project>
               <div
-                className="animate-bounce flex flex-col justify-center items-center pt-4 text-xl"
+                className="animate-bounce flex flex-col justify-center items-center pt-4 text-xl sm:hover:text-zinc-400 duration-500 active:text-zinc-400 text-zinc-600"
                 onClick={() => push("/Projects")}
               >
                 View All
@@ -243,9 +243,10 @@ export default function Main() {
                   lineColor2={"rgb(30 41 59)"}
                 >
                   <div className="flex flex-row gap-x-2 p-2 justify-end">
-                    <SocialIcon url="www.github.com/subinoybiswas" />
-                    <SocialIcon url="www.twitter.com/heysubinoy" />
-                    <SocialIcon url="www.instagram.com/biswas.subinoy" />
+                    <SocialIcon url="https://www.github.com/subinoybiswas" />
+                    <SocialIcon url="https://www.twitter.com/heysubinoy" />
+                    <SocialIcon url="https://www.instagram.com/biswas.subinoy" />
+                    <SocialIcon url="https://www.linkedin.com/in/heysubinoy/" />
                     <SocialIcon url="mailto:heysubinoy@gmail.com" />
                   </div>
                 </GridLines>
@@ -448,7 +449,7 @@ bg-[length:200%_auto] animate-gradient pb-1 text-7xl sm:text-8xl "
                   </div>
                   <Project></Project>
                   <div
-                    className="animate-bounce flex flex-col justify-center items-center py-6 text-2xl"
+                    className="animate-bounce flex flex-col justify-center items-center py-6 text-2xl sm:hover:text-zinc-400 duration-500 active:text-zinc-400 text-zinc-600"
                     onClick={() => push("/Projects")}
                   >
                     View All
@@ -514,10 +515,11 @@ bg-[length:200%_auto] animate-gradient pb-1 text-7xl sm:text-8xl "
                               field-of-view="30deg"
                             ></model-viewer>
                             <div className="flex flex-row gap-x-2 justify-center m-4">
-                              <SocialIcon url="www.github.com/subinoybiswas" />
-                              <SocialIcon url="www.twitter.com/heysubinoy" />
-                              <SocialIcon url="www.instagram.com/biswas.subinoy" />
+                              <SocialIcon url="https://www.github.com/subinoybiswas" />
+                              <SocialIcon url="https://www.twitter.com/heysubinoy" />
                               <SocialIcon url="mailto:heysubinoy@gmail.com" />
+                              <SocialIcon url="https://www.instagram.com/biswas.subinoy" />
+                              <SocialIcon url="https://www.linkedin.com/in/heysubinoy/" />
                             </div>
                           </div>
                         </div>
