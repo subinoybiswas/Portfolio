@@ -517,9 +517,9 @@ bg-[length:200%_auto] animate-gradient pb-1 text-7xl sm:text-8xl "
                             <div className="flex flex-row gap-x-2 justify-center m-4">
                               <SocialIcon url="https://www.github.com/subinoybiswas" />
                               <SocialIcon url="https://www.twitter.com/heysubinoy" />
+                              <SocialIcon url="mailto:heysubinoy@gmail.com" />
                               <SocialIcon url="https://www.instagram.com/biswas.subinoy" />
                               <SocialIcon url="https://www.linkedin.com/in/heysubinoy/" />
-                              <SocialIcon url="mailto:heysubinoy@gmail.com" />
                             </div>
                           </div>
                         </div>
