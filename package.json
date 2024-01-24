@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@google-analytics/data": "^4.3.0",
     "@google/model-viewer": "^3.4.0",
     "@react-spring/parallax": "^9.7.3",
     "@tsparticles/react": "^3.0.0",

@@ -266,6 +266,7 @@ export default function Main() {
                       <li className="mb-5">🚀 Full Stack Developer </li>
                       <li className="mb-5">✍️ Technical Content Writer </li>
                       <li className="mb-5">⚙️ Community Builder</li>
+                      <li className="mb-5">🏆 3+ Hackathon Winner</li>
                     </ul>
                     <a
                       href="/SubinoyResume.pdf"
@@ -483,9 +484,10 @@ bg-[length:200%_auto] animate-gradient pb-1 text-7xl sm:text-8xl "
                             <ul>
                               <li className="mb-2">🚀 Full Stack Developer </li>
                               <li className="mb-2">
-                                ✍️ Technical Content Writer{" "}
+                                ✍️ Technical Content Writer
                               </li>
-                              <li className="mb-5">⚙️ Community Builder</li>
+                              <li className="mb-2">⚙️ Community Builder</li>
+                              <li className="mb-5">🏆 3+ Hackathon Winner</li>
                             </ul>
                             <a
                               href="/SubinoyResume.pdf"
