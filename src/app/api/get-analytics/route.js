@@ -1,10 +1,21 @@
 import { BetaAnalyticsDataClient } from "@google-analytics/data";
 import { GoogleAuth } from "google-auth-library";
 import { NextResponse } from "next/server";
+import { COOKIE_NAME } from "@/app/constants";
+import { verify } from "jsonwebtoken";
+import { cookies } from "next/headers";
 export const fetchCache = "force-no-store";
 export async function POST(request) {
-  const req = request;
+  const body = request;
+  const cookiestore = cookies();
+  const token = cookiestore.get(COOKIE_NAME);
+  if (!token) {
+    return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+  }
+  const { value } = token;
+  const SECRET = process.env.JWT_SECRET || "";
   try {
+    verify(value, SECRET);
     const propertyId = process.env.PROPERTY_ID;
     const analyticsDataClient = new BetaAnalyticsDataClient({
       auth: new GoogleAuth({
