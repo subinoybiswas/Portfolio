@@ -60,8 +60,17 @@ export async function POST(request) {
         },
       ],
     });
+    const response = resp;
+    const metricHeaders = response[0].metricHeaders;
+    const metricValues = response[0].rows[0].metricValues;
+
+    // Find the index of the "activeUsers" metric:
+    const metricData = metricHeaders.map((header, index) => ({
+      fieldName: header.name,
+      value: metricValues[index].value,
+    }));
     return NextResponse.json(
-      { resp },
+      { metricData },
       {
         status: 200,
         headers: {
