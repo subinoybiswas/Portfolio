@@ -16,7 +16,6 @@ import { Button } from "primereact/button";
 import { ConfirmDialog, confirmDialog } from "primereact/confirmdialog";
 import { PrimeReactProvider, PrimeReactContext } from "primereact/api";
 
-
 export default function Projects() {
   const [projects, setProjects] = useState([]);
   const [current_project, setCurrentProject] = useState({
@@ -30,6 +29,7 @@ export default function Projects() {
     content: "",
     githublink: "",
     weblink: "",
+    pinned: "",
   });
   const [modal, setModal] = useState(0);
   useEffect(() => {
@@ -222,6 +222,12 @@ export default function Projects() {
       </a>
     );
   };
+  const pinnedTemplate = (project) => {
+    if (project.pinned) {
+      return <Button icon="pi pi-check"></Button>;
+    }
+    return <Button icon="pi pi-times"></Button>
+  };
   const WebLinkTemplate = (project) => {
     return (
       <a href={project.weblink} className="text-blue-500 hover:underline">
@@ -282,6 +288,7 @@ export default function Projects() {
               addProject={addProject}
               closeModal={closeModal}
               modal={modal}
+              setFormData={setFormData}
             />
           ) : (
             <></>
@@ -296,6 +303,7 @@ export default function Projects() {
             <Column field="content" header="Category"></Column>
             <Column body={GitHubLinkTemplate} header="GitHub Link"></Column>
             <Column body={WebLinkTemplate} header="Web Link"></Column>
+            <Column body={pinnedTemplate} header="Pinned"></Column>
             <Column body={ButtonTemplate} header="Actions"></Column>
           </DataTable>
 
