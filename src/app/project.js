@@ -41,7 +41,7 @@ export default function Project() {
                 <div className="absolute inset-0 translate-z-0 bg-[#090c3bdd] rounded-full blur-[80px]"></div>
               </div>
               <div className="flex flex-col h-full items-center text-center ">
-                <div className="mb-5 h-[150px] overflow-ellipsis">
+                <div className="mb-5 sm:h-[125px] overflow-ellipsis">
                   <h2 className="text-xl text-slate-200 font-bold mb-1 ">
                     {item.title}
                   </h2>
