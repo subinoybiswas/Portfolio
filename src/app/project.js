@@ -23,7 +23,12 @@ export default function Project() {
       });
   }, []);
   const maxProjects = isMobile ? 3 : 6;
-  const projectsToRender = data ? data.slice(0, maxProjects) : [];
+  const sortedProjects = data
+    ? data.slice().sort((a, b) => (b.pinned ? 1 : -1)) // Sort pinned projects first
+    : [];
+
+  const projectsToRender = sortedProjects.slice(0, maxProjects);
+
   return !isLoading ? (
     <div className="flex flex-col flex-wrap  xl:flex-row my-4 items-center justify-center">
       {projectsToRender.map((item) => (
@@ -41,7 +46,7 @@ export default function Project() {
                 <div className="absolute inset-0 translate-z-0 bg-[#090c3bdd] rounded-full blur-[80px]"></div>
               </div>
               <div className="flex flex-col h-full items-center text-center ">
-                <div className="mb-5 h-[125px] overflow-ellipsis">
+                <div className="mb-5 sm:h-[125px] overflow-ellipsis">
                   <h2 className="text-xl text-slate-200 font-bold mb-1 ">
                     {item.title}
                   </h2>
