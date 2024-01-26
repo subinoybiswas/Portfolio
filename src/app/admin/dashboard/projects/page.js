@@ -23,6 +23,7 @@ export default function Projects() {
     content: "",
     githublink: "",
     weblink: "",
+    pinned: "",
   });
   const [formData, setFormData] = useState({
     title: "",
@@ -52,7 +53,6 @@ export default function Projects() {
       const data = await response.json();
       setProjects(data.projects);
     } catch (error) {
-      console.error("Error fetching projects:", error);
       toast.error("Error Fetching Projects!", {
         position: "bottom-right",
         autoClose: 5000,
@@ -65,8 +65,6 @@ export default function Projects() {
       });
     }
   };
-
-  //   console.log(formData);
 
   const addProject = async () => {
     try {
@@ -89,7 +87,6 @@ export default function Projects() {
       });
       fetchProjects();
     } catch (error) {
-      console.error("Error adding project:", error);
       toast.error("Couldn't Create Project!", {
         position: "bottom-right",
         autoClose: 5000,
@@ -120,7 +117,6 @@ export default function Projects() {
         theme: "colored",
       });
     } catch (error) {
-      console.error("Error deleting project:", error);
       toast.error("Couldn't Delete Project!", {
         position: "bottom-right",
         autoClose: 5000,
@@ -138,16 +134,12 @@ export default function Projects() {
     try {
       const response = await axios.get(`/api/create-project/${projectId}`);
       setCurrentProject(response.data.projects[0]);
-      // console.log(response.data.projects);
       setModal(1);
-    } catch (error) {
-      console.error("Error editing project:", error);
-    }
+    } catch (error) {}
   };
 
   const editProject = async (projectId) => {
     try {
-      // console.log(projectId);
       const response = await axios.put(
         `/api/create-project/${projectId}`,
         current_project
@@ -171,7 +163,6 @@ export default function Projects() {
         theme: "light",
       });
     } catch (error) {
-      console.error("Error editing project:", error);
       toast.warn("Couldn't Delete Project!", {
         position: "bottom-right",
         autoClose: 5000,
@@ -226,7 +217,7 @@ export default function Projects() {
     if (project.pinned) {
       return <Button icon="pi pi-check"></Button>;
     }
-    return <Button icon="pi pi-times"></Button>
+    return <Button icon="pi pi-times"></Button>;
   };
   const WebLinkTemplate = (project) => {
     return (
@@ -242,7 +233,6 @@ export default function Projects() {
     });
   };
   const handleChangeEdit = (e) => {
-    console.log();
     setCurrentProject({
       ...current_project,
       [e.target.name]: e.target.value,
@@ -280,6 +270,7 @@ export default function Projects() {
               editProject={editProject}
               closeModal={closeModal}
               modal={modal}
+              setCurrentProject={setCurrentProject}
             />
           ) : modal === 2 ? (
             <AddModal

@@ -15,7 +15,6 @@ export default function AddModal(props) {
   const check = (e) => {
     setChecked(e.value);
     setFormData({ ...formData, pinned: e.value ? 1 : 0 });
-    console.log(formData);
   };
   return (
     <Dialog
