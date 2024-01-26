@@ -6,7 +6,7 @@ Welcome to my Portfolio made with Next.js! This dynamic portfolio showcases my p
 
 - **Dynamic Content**: Pulls project data from a database, allowing for easy updates and additions.
 - **Parallax Effects**: Engages with visitors with visually appealing parallax scrolling effects.
-- **3D Model View**: Showcases projects in a unique way with interactive 3D models.
+- **3D Model View**: Showcases projects uniquely with interactive 3D models.
 - **Powerful Dashboard**: Shows analytics for the portfolio site through a secure and private dashboard(yet to be public).
 - **Responsive Design**: Ensures a seamless experience on various devices.
 - **Interactive Particles**: Enhances user experience with dynamic and interactive particles that respond to user actions.
