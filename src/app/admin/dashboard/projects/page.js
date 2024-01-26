@@ -15,6 +15,8 @@ import { Column } from "primereact/column";
 import { Button } from "primereact/button";
 import { ConfirmDialog, confirmDialog } from "primereact/confirmdialog";
 import { PrimeReactProvider, PrimeReactContext } from "primereact/api";
+
+
 export default function Projects() {
   const [projects, setProjects] = useState([]);
   const [current_project, setCurrentProject] = useState({
@@ -134,7 +136,6 @@ export default function Projects() {
 
   const editProjectModal = async (projectId) => {
     try {
-      // console.log(projectId);
       const response = await axios.get(`/api/create-project/${projectId}`);
       setCurrentProject(response.data.projects[0]);
       // console.log(response.data.projects);

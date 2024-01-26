@@ -34,6 +34,7 @@ export default function AddModal(props) {
           placeholder="Content"
           required
           onChange={handleChange}
+          className="min-h-[100px]"
         />
         <InputText
           type="text"

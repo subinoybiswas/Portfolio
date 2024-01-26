@@ -38,6 +38,7 @@ export default function EditModal(props) {
           placeholder="Content"
           required
           onChange={handleChangeEdit}
+          className="min-h-[100px]"
         />
         <InputText
           type="text"
@@ -53,8 +54,12 @@ export default function EditModal(props) {
           value={current_project.weblink}
           onChange={handleChangeEdit}
         />
-        <Button className="inline-flex content-center" label="Edit" severity="danger" type="submit">
-        </Button>
+        <Button
+          className="inline-flex content-center"
+          label="Edit"
+          severity="danger"
+          type="submit"
+        ></Button>
       </form>
     </Dialog>
   );
