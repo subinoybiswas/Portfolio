@@ -450,7 +450,7 @@ bg-[length:200%_auto] animate-gradient pb-1 text-7xl sm:text-8xl "
                   </div>
                   <Project></Project>
                   <div
-                    className="animate-bounce flex flex-col justify-center items-center py-6 text-2xl sm:hover:text-zinc-400 duration-500 active:text-zinc-400 text-zinc-600"
+                    className="animate-bounce flex flex-col justify-center items-center pb-11 pt-1 text-2xl sm:hover:text-zinc-400 duration-500 active:text-zinc-400 text-zinc-600"
                     onClick={() => push("/Projects")}
                   >
                     View All

@@ -4,7 +4,9 @@ import { SpotlightCard } from "../spotlight";
 import { useEffect, useState } from "react";
 import Skleton from "../skleton";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 export default function AllProjects() {
+  const { push } = useRouter();
   const [data, setData] = useState(null);
   const [isLoading, setLoading] = useState(true);
 
@@ -20,7 +22,12 @@ export default function AllProjects() {
   return (
     <div>
       <div className="flex flex-col  items-center justify-center content-center text-5xl  bg-gradient-to-r from-[#000103] via-zinc-600/20 to-[#010610]  min-h-screen">
-        <div className="m-4">All Projects</div>
+        <div className="flex flex-row items-center ">
+          <button className="text-2xl " onClick={() => push("/")}>
+            {"<-"}
+          </button>
+          <div className="m-4  text-center">All Projects</div>
+        </div>
         {!isLoading ? (
           <div className="flex flex-col flex-wrap  xl:flex-row my-4 items-center justify-center">
             {data.map((item) => (
