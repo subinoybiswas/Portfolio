@@ -516,7 +516,7 @@ bg-[length:200%_auto] animate-gradient pb-1 text-7xl sm:text-8xl "
                               autoplay=""
                               field-of-view="30deg"
                             ></model-viewer>
-                            <div className="flex flex-row gap-x-2 justify-center m-4">
+                            <div className="flex gap-x-2 my-4">
                               <SocialIcon url="https://www.github.com/subinoybiswas" />
                               <SocialIcon url="https://www.twitter.com/heysubinoy" />
                               <SocialIcon url="mailto:heysubinoy@gmail.com" />
