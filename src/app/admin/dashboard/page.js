@@ -3,6 +3,7 @@ import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+
 import {
   Home,
   LineChart,
@@ -12,7 +13,7 @@ import {
   ShoppingCart,
   Users2,
 } from "lucide-react";
-
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -31,7 +32,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Input } from "@/components/ui/input";
 import {
   Table,
   TableBody,
@@ -56,24 +56,44 @@ import {
 export default function Dashboard() {
   const [data, setData] = useState("");
   const [loading, setLoading] = useState(true);
+  const [commitData, setCommitData] = useState("");
   useEffect(() => {
-    fetch("/api/get-analytics", { method: "POST" })
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error(`HTTP error! status: ${res.status}`);
+    const fetchData = async () => {
+      try {
+        // Fetch analytics data
+        const analyticsResponse = await fetch("/api/get-analytics", {
+          method: "POST",
+        });
+        if (!analyticsResponse.ok) {
+          throw new Error(`HTTP error! status: ${analyticsResponse.status}`);
         }
+        const analyticsData = await analyticsResponse.json();
+        setData(analyticsData.metricData);
+        console.log(analyticsData);
 
-        return res.json(); // Parse JSON data
-      })
-      .then((data) => {
-        setData(data.metricData);
+        // Fetch GitHub data
+        const githubResponse = await fetch("/api/github", { method: "POST" });
+        const githubData = await githubResponse.json();
+        const dataArray = githubData.data.map((data) => ({
+          shortSha: data.sha.substring(0, 7),
+          fullSha: data.sha,
+          commitUrl: data.html_url,
+          commitMessage: data.commit.message,
+          committerLink: data.committer.html_url,
+          committerName: data.committer.login,
+          committerAvatar: data.committer.avatar_url,
+        }));
+        setCommitData(dataArray);
+        console.log(dataArray);
         setLoading(false);
-        console.log(data);
-      })
-      .catch((error) => {
+      } catch (error) {
         console.error("Error fetching data:", error);
-      });
+      }
+    };
+
+    fetchData();
   }, []);
+
   const { push } = useRouter();
   const logoutBtn = async () => {
     try {
@@ -91,6 +111,7 @@ export default function Dashboard() {
     eventCount: 500,
     newUsers: 500,
   };
+
   return (
     <TooltipProvider>
       <div className="flex min-h-screen w-full flex-col bg-muted/40">
@@ -241,25 +262,48 @@ export default function Dashboard() {
                   })}
               </div>
             </div>
-            <Table>
-              <TableCaption>A list of your recent invoices.</TableCaption>
-              <TableHeader>
-                <TableRow>
-                  <TableHead className="w-[100px]">Invoice</TableHead>
-                  <TableHead>Status</TableHead>
-                  <TableHead>Method</TableHead>
-                  <TableHead className="text-right">Amount</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                <TableRow>
-                  <TableCell className="font-medium">INV001</TableCell>
-                  <TableCell>Paid</TableCell>
-                  <TableCell>Credit Card</TableCell>
-                  <TableCell className="text-right">$250.00</TableCell>
-                </TableRow>
-              </TableBody>
-            </Table>
+            {!loading ? (
+              <Table>
+                <TableCaption>A list of the commits </TableCaption>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead className="w-[100px]">Commit</TableHead>
+                    <TableHead>Message</TableHead>
+                    <TableHead>User</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {commitData.map((commit, index) => (
+                    <>
+                      <TableRow>
+                        <TableCell
+                          className="font-medium cursor-pointer"
+                          onClick={() =>
+                            window.open(commit.commitUrl, "_blank")
+                          }
+                        >
+                          {commit.shortSha}
+                        </TableCell>
+                        <TableCell>{commit.commitMessage}</TableCell>
+                        <TableCell>
+                          <Avatar
+                            className="cursor-pointer"
+                            onClick={() =>
+                              window.open(commit.committerLink, "_blank")
+                            }
+                          >
+                            <AvatarImage src={commit.committerAvatar} />
+                            <AvatarFallback>CM</AvatarFallback>
+                          </Avatar>
+                        </TableCell>
+                      </TableRow>
+                    </>
+                  ))}
+                </TableBody>
+              </Table>
+            ) : (
+              <></>
+            )}
           </main>
         </div>
       </div>
