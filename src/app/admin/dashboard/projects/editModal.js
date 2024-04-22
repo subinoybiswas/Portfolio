@@ -19,11 +19,11 @@ export default function EditModal(props) {
   };
   return (
     <Dialog
-      header={current_project.title}
       visible={modal === 1}
       style={{ width: "50vw" }}
       onHide={closeModal}
       draggable={false}
+      className="bg-slate-700 p-5 rounded-3xl text-xl gap-1 "
     >
       <form
         key={current_project.project_id}
@@ -31,7 +31,7 @@ export default function EditModal(props) {
           e.preventDefault();
           editProject(current_project.project_id);
         }}
-        className="mt-4  flex flex-col justify-center gap-2 mx-4 "
+        className="flex flex-col justify-center gap-2"
       >
         <InputText
           type="text"
@@ -40,6 +40,7 @@ export default function EditModal(props) {
           value={current_project.title}
           required
           onChange={handleChangeEdit}
+          className="rounded-xl p-2 bg-slate-800 text-xl"
         />
         <InputTextarea
           name="content"
@@ -47,7 +48,7 @@ export default function EditModal(props) {
           placeholder="Content"
           required
           onChange={handleChangeEdit}
-          className="min-h-[100px]"
+          className="rounded-xl p-2 bg-slate-800 text-xl min-h-[200px]"
         />
         <InputText
           type="text"
@@ -55,6 +56,7 @@ export default function EditModal(props) {
           placeholder="GitHub Link"
           value={current_project.githublink}
           onChange={handleChangeEdit}
+          className="rounded-xl p-2 bg-slate-800 text-xl"
         />
         <InputText
           type="text"
@@ -62,6 +64,7 @@ export default function EditModal(props) {
           placeholder="Web Link"
           value={current_project.weblink}
           onChange={handleChangeEdit}
+          className="rounded-xl p-2 bg-slate-800 text-xl"
         />
         <div className="flex flex-row justify-start content-center items-center gap-2 mx-3">
           <div className="card flex justify-center content-center ">
@@ -71,9 +74,8 @@ export default function EditModal(props) {
         </div>
 
         <Button
-          className="inline-flex content-center"
           label="Edit"
-          severity="danger"
+          className="bg-slate-800 p-2 w-[100px] self-center rounded-xl text-xl hover:bg-slate-900 transition-colors"
           type="submit"
         ></Button>
       </form>

@@ -195,7 +195,7 @@ export default function Projects() {
       reject,
     });
   };
-  const ButtonTemplate = (project) => {
+  const ButtonTemplate = ({ project }) => {
     return (
       <div className="flex flex-row gap-2">
         <Button onClick={() => confirm(project.project_id)} severity="danger">
@@ -210,26 +210,7 @@ export default function Projects() {
       </div>
     );
   };
-  const GitHubLinkTemplate = (project) => {
-    return (
-      <a href={project.githublink} className="text-blue-500 hover:underline">
-        {project.githublink}
-      </a>
-    );
-  };
-  const pinnedTemplate = (project) => {
-    if (project.pinned) {
-      return <Button icon="pi pi-check"></Button>;
-    }
-    return <Button icon="pi pi-times"></Button>;
-  };
-  const WebLinkTemplate = (project) => {
-    return (
-      <a href={project.weblink} className="text-blue-500 hover:underline">
-        {project.weblink}
-      </a>
-    );
-  };
+
   const handleChange = (e) => {
     setFormData({
       ...formData,

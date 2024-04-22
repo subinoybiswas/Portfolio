@@ -24,6 +24,7 @@ export default function AddModal(props) {
       style={{ width: "50vw" }}
       onHide={closeModal}
       draggable={false}
+      className="bg-slate-700 p-5 rounded-3xl text-xl gap-1"
     >
       <form
         onSubmit={(e) => {
@@ -38,34 +39,45 @@ export default function AddModal(props) {
           placeholder="Title"
           required
           onChange={handleChange}
+          className="rounded-xl p-2 bg-slate-800 text-xl"
         />
         <InputTextarea
           name="content"
           placeholder="Content"
           required
           onChange={handleChange}
-          className="min-h-[100px]"
+          className="rounded-xl p-2 bg-slate-800 text-xl min-h-[200px]"
         />
         <InputText
           type="text"
           name="githublink"
           placeholder="GitHub Link"
           onChange={handleChange}
+          className="rounded-xl p-2 bg-slate-800 text-xl"
         />
         <InputText
           type="text"
           name="weblink"
           placeholder="Web Link"
+          className="rounded-xl p-2 bg-slate-800 text-xl "
           onChange={handleChange}
         />
         <div className="flex flex-row justify-start content-center items-center gap-2 mx-3">
           <div className="card flex justify-center content-center ">
-            <InputSwitch checked={checked} onChange={(e) => check(e)} />
+            <InputSwitch
+              checked={checked}
+              onChange={(e) => check(e)}
+              className=""
+            />
           </div>
           <div>Pinned</div>
         </div>
 
-        <Button type="submit" severity="success" label="Add" />
+        <Button
+          type="submit"
+          className="bg-slate-800 p-2 w-[100px] self-center rounded-xl text-xl hover:bg-slate-900 transition-colors"
+          label="Add"
+        />
       </form>
     </Dialog>
   );
