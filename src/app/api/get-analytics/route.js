@@ -19,7 +19,7 @@ export async function POST(request) {
     const propertyId = process.env.PROPERTY_ID;
     const analyticsDataClient = new BetaAnalyticsDataClient({
       auth: new GoogleAuth({
-        projectId: "yourprojectid",
+        projectId: "subinoy-382420",
         scopes: "https://www.googleapis.com/auth/analytics",
         credentials: {
           client_email: process.env.CLIENT_EMAIL,
@@ -32,6 +32,7 @@ export async function POST(request) {
     }
     const resp = await analyticsDataClient.runReport({
       property: `properties/${propertyId}`,
+
       dateRanges: [
         {
           startDate: "2023-01-21",
