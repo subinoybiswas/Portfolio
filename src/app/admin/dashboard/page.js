@@ -103,6 +103,7 @@ export default function Dashboard() {
       console.log(e);
     }
   };
+ 
   const goal = {
     totalUsers: 2000,
     averageSessionDuration: 500,
@@ -151,7 +152,7 @@ export default function Dashboard() {
             <Tooltip>
               <TooltipTrigger asChild>
                 <Link
-                  href="#"
+                  href="dashboard/projects"
                   className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
                 >
                   <Package className="h-5 w-5" />
