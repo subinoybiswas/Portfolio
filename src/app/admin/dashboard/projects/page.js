@@ -2,6 +2,17 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "../../../globals.css";
+import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  DialogFooter,
+  DialogClose,
+} from "@/components/ui/dialog";
 
 import EditModal from "./editModal";
 import AddModal from "./addModal";
@@ -9,8 +20,6 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { TiTick } from "react-icons/ti";
 import { ImCross } from "react-icons/im";
-import { Button } from "primereact/button";
-import { ConfirmDialog, confirmDialog } from "primereact/confirmdialog";
 import {
   Table,
   TableBody,
@@ -184,27 +193,33 @@ export default function Projects() {
     deleteProject(id);
   };
 
-  const reject = () => {};
-  const confirm = (id) => {
-    confirmDialog({
-      message: "Do you want to delete this project?",
-      header: "Delete Confirmation",
-      icon: "pi pi-info-circle",
-      defaultFocus: "reject",
-      acceptClassName: "p-button-danger",
-      accept: () => accept(id),
-      reject,
-    });
-  };
   const ButtonTemplate = ({ project }) => {
     return (
       <div className="flex flex-col content-center text-center items-center gap-2">
-        <Button
-          onClick={() => confirm(project.project_id)}
-          className="bg-red-800 p-2 rounded-xl hover:bg-red-600 transition-colors w-full text-center justify-center"
-        >
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Are you absolutely sure?</DialogTitle>
+            <DialogDescription>
+              This action cannot be undone. This will permanently delete your
+              project and the data
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter className="sm:justify-start">
+            <DialogClose asChild>
+              <Button
+                type="button"
+                variant="secondary"
+                onClick={() => accept(project.project_id)}
+              >
+                Delete
+              </Button>
+            </DialogClose>
+          </DialogFooter>
+        </DialogContent>
+        <DialogTrigger className="bg-red-800 p-2 rounded-xl hover:bg-red-600 transition-colors w-full text-center justify-center">
           Delete
-        </Button>
+        </DialogTrigger>
+
         <Button
           onClick={() => editProjectModal(project.project_id)}
           className="bg-yellow-800 p-2 rounded-xl hover:bg-yellow-600 transition-colors w-full text-center justify-center"
@@ -235,90 +250,93 @@ export default function Projects() {
   };
   return (
     <>
-      <div>
-        <ConfirmDialog />{" "}
-        <ToastContainer
-          position="bottom-right"
-          autoClose={5000}
-          hideProgressBar
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="light"
-        />
-        <div className="content-center justify-center items-center flex flex-col">
-          <h1 className="text-4xl font-bold m-4">Projects Page</h1>
+      <Dialog>
+        <div>
+          <ToastContainer
+            position="bottom-right"
+            autoClose={5000}
+            hideProgressBar
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+          />
+          <div className="content-center justify-center items-center flex flex-col">
+            <h1 className="text-4xl font-bold m-4">Projects Page</h1>
 
-          {modal === 1 ? (
-            <EditModal
-              current_project={current_project}
-              handleChangeEdit={handleChangeEdit}
-              editProject={editProject}
-              closeModal={closeModal}
-              modal={modal}
-              setCurrentProject={setCurrentProject}
-            />
-          ) : modal === 2 ? (
-            <AddModal
-              project={formData}
-              handleChange={handleChange}
-              addProject={addProject}
-              closeModal={closeModal}
-              modal={modal}
-              setFormData={setFormData}
-            />
-          ) : (
-            <></>
-          )}
+            {modal === 1 ? (
+              <EditModal
+                current_project={current_project}
+                handleChangeEdit={handleChangeEdit}
+                editProject={editProject}
+                closeModal={closeModal}
+                modal={modal}
+                setCurrentProject={setCurrentProject}
+              />
+            ) : modal === 2 ? (
+              <AddModal
+                project={formData}
+                handleChange={handleChange}
+                addProject={addProject}
+                closeModal={closeModal}
+                modal={modal}
+                setFormData={setFormData}
+              />
+            ) : (
+              <></>
+            )}
 
-          <Table>
-            <TableCaption>A list of your projects.</TableCaption>
-            <TableHeader>
-              <TableRow>
-                <TableHead className="w-[100px]">Title</TableHead>
-                <TableHead>Content</TableHead>
-                <TableHead>Github Link</TableHead>
-                <TableHead>Web Link</TableHead>
-                <TableHead>Pinned</TableHead>
-                <TableHead>Actions</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {projects.map((project, index) => (
-                <TableRow key={index}>
-                  <TableCell className="font-medium">{project.title}</TableCell>
-                  <TableCell>{project.content}</TableCell>
-                  <TableCell>
-                    <a
-                      href={project.githublink}
-                      className="text-blue-500 hover:underline"
-                    >
-                      {project.githublink}
-                    </a>
-                  </TableCell>
-                  <TableCell>{project.weblink}</TableCell>
-                  <TableCell>
-                    {project.pinned ? <TiTick size={25} /> : <ImCross />}
-                  </TableCell>
-                  <TableCell>
-                    <ButtonTemplate project={project}></ButtonTemplate>
-                  </TableCell>
+            <Table>
+              <TableCaption>A list of your projects.</TableCaption>
+              <TableHeader>
+                <TableRow>
+                  <TableHead className="w-[100px]">Title</TableHead>
+                  <TableHead>Content</TableHead>
+                  <TableHead>Github Link</TableHead>
+                  <TableHead>Web Link</TableHead>
+                  <TableHead>Pinned</TableHead>
+                  <TableHead>Actions</TableHead>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+              </TableHeader>
+              <TableBody>
+                {projects.map((project, index) => (
+                  <TableRow key={index}>
+                    <TableCell className="font-medium">
+                      {project.title}
+                    </TableCell>
+                    <TableCell>{project.content}</TableCell>
+                    <TableCell>
+                      <a
+                        href={project.githublink}
+                        className="text-blue-500 hover:underline"
+                      >
+                        {project.githublink}
+                      </a>
+                    </TableCell>
+                    <TableCell>{project.weblink}</TableCell>
+                    <TableCell>
+                      {project.pinned ? <TiTick size={25} /> : <ImCross />}
+                    </TableCell>
+                    <TableCell>
+                      <ButtonTemplate project={project}></ButtonTemplate>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
 
-          <button
-            onClick={() => addProjectModal()}
-            className="bg-blue-500 text-white px-4 py-2 rounded m-4 "
-          >
-            Add Project
-          </button>
+            <button
+              onClick={() => addProjectModal()}
+              className="bg-blue-500 text-white px-4 py-2 rounded m-4 "
+            >
+              Add Project
+            </button>
+          </div>
         </div>
-      </div>
+      </Dialog>
     </>
   );
 }
