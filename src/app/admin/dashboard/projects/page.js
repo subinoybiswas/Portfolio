@@ -7,7 +7,8 @@ import EditModal from "./editModal";
 import AddModal from "./addModal";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import { TiTick } from "react-icons/ti";
+import { ImCross } from "react-icons/im";
 import { Button } from "primereact/button";
 import { ConfirmDialog, confirmDialog } from "primereact/confirmdialog";
 import {
@@ -197,13 +198,16 @@ export default function Projects() {
   };
   const ButtonTemplate = ({ project }) => {
     return (
-      <div className="flex flex-row gap-2">
-        <Button onClick={() => confirm(project.project_id)} severity="danger">
+      <div className="flex flex-col content-center text-center items-center gap-2">
+        <Button
+          onClick={() => confirm(project.project_id)}
+          className="bg-red-800 p-2 rounded-xl hover:bg-red-600 transition-colors w-full text-center justify-center"
+        >
           Delete
         </Button>
         <Button
           onClick={() => editProjectModal(project.project_id)}
-          severity="warning"
+          className="bg-yellow-800 p-2 rounded-xl hover:bg-yellow-600 transition-colors w-full text-center justify-center"
         >
           Edit
         </Button>
@@ -297,11 +301,7 @@ export default function Projects() {
                   </TableCell>
                   <TableCell>{project.weblink}</TableCell>
                   <TableCell>
-                    {project.pinned ? (
-                      <Button icon="pi pi-check"></Button>
-                    ) : (
-                      <Button icon="pi pi-times"></Button>
-                    )}
+                    {project.pinned ? <TiTick size={25} /> : <ImCross />}
                   </TableCell>
                   <TableCell>
                     <ButtonTemplate project={project}></ButtonTemplate>
@@ -313,7 +313,7 @@ export default function Projects() {
 
           <button
             onClick={() => addProjectModal()}
-            className="bg-blue-500 text-white px-4 py-2 rounded mt-4"
+            className="bg-blue-500 text-white px-4 py-2 rounded m-4 "
           >
             Add Project
           </button>
