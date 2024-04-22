@@ -4,6 +4,7 @@ import { Button } from "primereact/button";
 import { InputTextarea } from "primereact/inputtextarea";
 import { InputSwitch } from "primereact/inputswitch";
 import { useState } from "react";
+
 export default function EditModal(props) {
   const current_project = props.current_project;
   const handleChangeEdit = props.handleChangeEdit;
@@ -15,7 +16,6 @@ export default function EditModal(props) {
   const check = (e) => {
     setChecked(e.value);
     setCurrentProject({ ...current_project, pinned: e.value ? 1 : 0 });
-  
   };
   return (
     <Dialog

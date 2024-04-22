@@ -2,19 +2,23 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "../../../globals.css";
-import "primereact/resources/themes/md-dark-deeppurple/theme.css";
-import "primereact/resources/primereact.min.css";
-import "primeicons/primeicons.css";
-import "primeflex/primeflex.css";
+
 import EditModal from "./editModal";
 import AddModal from "./addModal";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { DataTable } from "primereact/datatable";
-import { Column } from "primereact/column";
+
 import { Button } from "primereact/button";
 import { ConfirmDialog, confirmDialog } from "primereact/confirmdialog";
-import { PrimeReactProvider, PrimeReactContext } from "primereact/api";
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 
 export default function Projects() {
   const [projects, setProjects] = useState([]);
@@ -245,7 +249,7 @@ export default function Projects() {
     setModal(2);
   };
   return (
-    <PrimeReactProvider>
+    <>
       <div>
         <ConfirmDialog />{" "}
         <ToastContainer
@@ -284,19 +288,47 @@ export default function Projects() {
           ) : (
             <></>
           )}
-          <DataTable
-            value={projects}
-            showGridlines
-            tableStyle={{ minWidth: "50rem" }}
-            className="p4"
-          >
-            <Column field="title" header="Name"></Column>
-            <Column field="content" header="Category"></Column>
-            <Column body={GitHubLinkTemplate} header="GitHub Link"></Column>
-            <Column body={WebLinkTemplate} header="Web Link"></Column>
-            <Column body={pinnedTemplate} header="Pinned"></Column>
-            <Column body={ButtonTemplate} header="Actions"></Column>
-          </DataTable>
+
+          <Table>
+            <TableCaption>A list of your projects.</TableCaption>
+            <TableHeader>
+              <TableRow>
+                <TableHead className="w-[100px]">Title</TableHead>
+                <TableHead>Content</TableHead>
+                <TableHead>Github Link</TableHead>
+                <TableHead>Web Link</TableHead>
+                <TableHead>Pinned</TableHead>
+                <TableHead>Actions</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {projects.map((project, index) => (
+                <TableRow key={index}>
+                  <TableCell className="font-medium">{project.title}</TableCell>
+                  <TableCell>{project.content}</TableCell>
+                  <TableCell>
+                    <a
+                      href={project.githublink}
+                      className="text-blue-500 hover:underline"
+                    >
+                      {project.githublink}
+                    </a>
+                  </TableCell>
+                  <TableCell>{project.weblink}</TableCell>
+                  <TableCell>
+                    {project.pinned ? (
+                      <Button icon="pi pi-check"></Button>
+                    ) : (
+                      <Button icon="pi pi-times"></Button>
+                    )}
+                  </TableCell>
+                  <TableCell>
+                    <ButtonTemplate project={project}></ButtonTemplate>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
 
           <button
             onClick={() => addProjectModal()}
@@ -306,6 +338,6 @@ export default function Projects() {
           </button>
         </div>
       </div>
-    </PrimeReactProvider>
+    </>
   );
 }

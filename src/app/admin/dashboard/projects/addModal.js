@@ -3,6 +3,7 @@ import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import { InputTextarea } from "primereact/inputtextarea";
 import { InputSwitch } from "primereact/inputswitch";
+
 import { useState } from "react";
 export default function AddModal(props) {
   const handleChange = props.handleChange;
