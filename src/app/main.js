@@ -207,17 +207,22 @@ export default function Main() {
               </div>
             </ParallaxLayer>
 
-            <ParallaxLayer offset={1}>
-              <div className="">
-                <div className=" rounded-3xl  flex flex-col justify-center items-center ">
-                  <div className="sm:text-5xl text-4xl my-4">Projects</div>
+            {/* <ParallaxLayer offset={1}>
+              <div className=" rounded-t-3xl">
+                <div className=" rounded-3xl  flex flex-col pl-20">
+                  <div className="sm:text-5xl text-4xl my-10">PROJECTS</div>
                 </div>
               </div>
-            </ParallaxLayer>
+            </ParallaxLayer> */}
             <ParallaxLayer
-              offset={1.15}
-              className="justify-center items-center"
+              offset={1}
+              className="justify-center items-center "
             >
+              <div className=" rounded-t-3xl">
+                <div className=" rounded-3xl  flex flex-col pl-20">
+                  <div className="sm:text-5xl text-4xl my-5">PROJECTS</div>
+                </div>
+              </div>
               <Project></Project>
               <div
                 className="animate-bounce flex flex-col justify-center items-center pt-4 text-xl sm:hover:text-zinc-400 duration-500 active:text-zinc-400 text-zinc-600"
@@ -229,18 +234,18 @@ export default function Main() {
 
             <ParallaxLayer
               offset={2}
-              className="bg-slate-800  rounded-3xl "
-              speed={0.75}
+              className="bg-slate-800  rounded-3xl"
+              speed={0.5}
             >
               <div class="h-full w-full rounded-md bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-1">
                 <GridLines
-                  className="grid-area h-[100%]  bg-white rounded-3xl "
+                  className="grid-area h-[100%]  bg-[#020817]  rounded-3xl "
                   cellWidth={25}
                   cellWidth2={25}
                   strokeWidth={0.25}
                   strokeWidth2={0.25}
-                  lineColor={"rgb(30 41 59)"}
-                  lineColor2={"rgb(30 41 59)"}
+                  lineColor={"rgba(229, 231, 235, 0.5)"}
+                  lineColor2={"rgba(229, 231, 235, 0.5)"}
                 >
                   <div className="flex flex-row gap-x-2 p-2 justify-end">
                     <SocialIcon url="https://www.github.com/subinoybiswas" />
@@ -254,7 +259,7 @@ export default function Main() {
             </ParallaxLayer>
 
             <ParallaxLayer offset={2.35} speed={0.75}>
-              <div className="flex flex-row text-black text-3xl  md:text-4xl lg:text-5xl ml-[370px] gap-[80px]">
+              <div className="flex flex-row text-slate-100 text-3xl  md:text-4xl lg:text-5xl ml-[370px] gap-[80px]">
                 <div>
                   <div style={{ display: "inline-block" }}>Hey👋 I&apos;m</div>
                   <div className="pl-2 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 bg-clip-text text-transparent font-outline-2 font-semibold pb-2 inline-block">
@@ -324,7 +329,7 @@ export default function Main() {
             className=" select-none bg-gradient-to-bl
     from-[#000103] via-zinc-600/20 to-[#010610] "
           >
-            <div className=" flex flex-col  justify-center items-center  text-center sm:w-auto w-screen">
+            <div className=" flex flex-col  justify-center items-start text-center items-center sm:w-auto w-screen">
               {init && (
                 <Particles
                   className="z-[-1] "

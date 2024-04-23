@@ -21,6 +21,7 @@
     "@radix-ui/react-tabs": "^1.0.4",
     "@radix-ui/react-tooltip": "^1.0.7",
     "@react-spring/parallax": "^9.7.3",
+    "@tailwindcss/typography": "^0.5.12",
     "@tsparticles/react": "^3.0.0",
     "@tsparticles/slim": "^3.0.3",
     "@vercel/analytics": "^1.1.1",
@@ -56,6 +57,7 @@
   "devDependencies": {
     "@types/react": "18.2.46",
     "autoprefixer": "^10.0.1",
+    "daisyui": "^4.10.2",
     "eslint": "^8",
     "eslint-config-next": "14.0.4",
     "postcss": "^8",
