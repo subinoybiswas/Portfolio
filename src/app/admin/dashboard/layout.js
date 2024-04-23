@@ -33,7 +33,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import Link from "next/link";
+import { LoaderIcon } from "lucide-react";
 import getPageName from "../../../../helpers/pagePath";
 export default function AdminLayout({ children }) {
   const [isSuccess, setSuccess] = useState(false);
@@ -71,7 +71,11 @@ export default function AdminLayout({ children }) {
     setCurrentURL(url);
   };
   if (!isSuccess) {
-    <span className="loading loading-spinner loading-lg"></span>;
+    <div className="grid place-items-center h-[80vh]">
+      <div className="grid place-items-center">
+        <LoaderIcon className="animate-spin" size={50} />
+      </div>
+    </div>;
   }
   const logoutBtn = async () => {
     try {

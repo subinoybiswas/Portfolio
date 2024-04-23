@@ -31,6 +31,7 @@ import {
 } from "@/components/ui/table";
 
 export default function Projects() {
+  const [loading, setLoading] = useState(false);
   const [projects, setProjects] = useState([]);
   const [current_project, setCurrentProject] = useState({
     title: "",
@@ -146,9 +147,11 @@ export default function Projects() {
 
   const editProjectModal = async (projectId) => {
     try {
+      setModal(1);
+      setLoading(true);
       const response = await axios.get(`/api/create-project/${projectId}`);
       setCurrentProject(response.data.projects[0]);
-      setModal(1);
+      setLoading(false);
     } catch (error) {}
   };
 
@@ -265,12 +268,11 @@ export default function Projects() {
             theme="light"
           />
           <div className="content-center justify-center items-center flex flex-col">
-       
-
             {modal === 1 ? (
               <EditModal
                 current_project={current_project}
                 handleChangeEdit={handleChangeEdit}
+                loading={loading}
                 editProject={editProject}
                 closeModal={closeModal}
                 modal={modal}
