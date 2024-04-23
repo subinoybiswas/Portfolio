@@ -265,7 +265,7 @@ export default function Projects() {
             theme="light"
           />
           <div className="content-center justify-center items-center flex flex-col">
-            <h1 className="text-4xl font-bold m-4">Projects Page</h1>
+       
 
             {modal === 1 ? (
               <EditModal

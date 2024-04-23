@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { FolderOpenDot } from "lucide-react";
 
 import {
   Tooltip,
@@ -33,6 +34,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import Link from "next/link";
+import getPageName from "../../../../helpers/pagePath";
 export default function AdminLayout({ children }) {
   const [isSuccess, setSuccess] = useState(false);
   const { push } = useRouter();
@@ -60,8 +62,16 @@ export default function AdminLayout({ children }) {
 
     fetchData();
   }, [push]);
+  function getCurrentURL() {
+    return window.location.pathname;
+  }
+  const [current, setCurrentURL] = useState("/admin/dashboard");
+  const changeCurrent = (url) => {
+    push(url);
+    setCurrentURL(url);
+  };
   if (!isSuccess) {
-    return <p>Loading...</p>;
+    <span className="loading loading-spinner loading-lg"></span>;
   }
   const logoutBtn = async () => {
     try {
@@ -71,75 +81,88 @@ export default function AdminLayout({ children }) {
       console.log(e);
     }
   };
+
   return (
     <TooltipProvider>
       <div className="flex min-h-screen w-full flex-col bg-muted/40">
         <aside className="fixed inset-y-0 left-0 z-10 w-14 flex-col border-r hidden bg-background sm:flex">
           <nav className="flex flex-col items-center gap-4 px-2 sm:py-4">
-            <Link
+            <div
               href="#"
               className="group flex h-9 w-9 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:h-8 md:w-8 md:text-base"
             >
               <Package2 className="h-4 w-4 transition-all group-hover:scale-110" />
               <span className="sr-only">Portifolio</span>
-            </Link>
+            </div>
             <Tooltip>
               <TooltipTrigger asChild>
-                <Link
-                  href="#"
-                  className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
+                <div
+                  onClick={() => {
+                    changeCurrent("/admin/dashboard");
+                  }}
+                  className={`flex h-9 w-9 items-center justify-center rounded-lg ${
+                    current === "/admin/dashboard"
+                      ? "bg-accent text-accent-foreground"
+                      : "text-muted-foreground"
+                  } transition-colors hover:text-foreground md:h-8 md:w-8`}
                 >
                   <Home className="h-5 w-5" />
                   <span className="sr-only">Dashboard</span>
-                </Link>
+                </div>
               </TooltipTrigger>
               <TooltipContent side="right">Dashboard</TooltipContent>
             </Tooltip>
             <Tooltip>
               <TooltipTrigger asChild>
-                <Link
-                  href="#"
-                  className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent text-accent-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
+                <div
+                  onClick={() => {
+                    changeCurrent("/admin/dashboard/projects");
+                  }}
+                  className={`flex h-9 w-9 items-center justify-center rounded-lg ${
+                    current === "/admin/dashboard/projects"
+                      ? "bg-accent text-accent-foreground"
+                      : "text-muted-foreground"
+                  } transition-colors hover:text-foreground md:h-8 md:w-8`}
                 >
-                  <ShoppingCart className="h-5 w-5" />
-                  <span className="sr-only">Orders</span>
-                </Link>
+                  <FolderOpenDot className="h-5 w-5" />
+                  <span className="sr-only">Projects</span>
+                </div>
               </TooltipTrigger>
-              <TooltipContent side="right">Orders</TooltipContent>
+              <TooltipContent side="right">Projects</TooltipContent>
             </Tooltip>
             <Tooltip>
               <TooltipTrigger asChild>
-                <Link
+                <div
                   href="dashboard/projects"
                   className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
                 >
                   <Package className="h-5 w-5" />
                   <span className="sr-only">Products</span>
-                </Link>
+                </div>
               </TooltipTrigger>
               <TooltipContent side="right">Products</TooltipContent>
             </Tooltip>
             <Tooltip>
               <TooltipTrigger asChild>
-                <Link
+                <div
                   href="#"
                   className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
                 >
                   <Users2 className="h-5 w-5" />
                   <span className="sr-only">Customers</span>
-                </Link>
+                </div>
               </TooltipTrigger>
               <TooltipContent side="right">Customers</TooltipContent>
             </Tooltip>
             <Tooltip>
               <TooltipTrigger asChild>
-                <Link
+                <div
                   href="#"
                   className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
                 >
                   <LineChart className="h-5 w-5" />
                   <span className="sr-only">Analytics</span>
-                </Link>
+                </div>
               </TooltipTrigger>
               <TooltipContent side="right">Analytics</TooltipContent>
             </Tooltip>
@@ -147,13 +170,13 @@ export default function AdminLayout({ children }) {
           <nav className="mt-auto flex flex-col items-center gap-4 px-2 sm:py-4">
             <Tooltip>
               <TooltipTrigger asChild>
-                <Link
+                <div
                   href="#"
                   className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
                 >
                   <Settings className="h-5 w-5" />
                   <span className="sr-only">Settings</span>
-                </Link>
+                </div>
               </TooltipTrigger>
               <TooltipContent side="right">Settings</TooltipContent>
             </Tooltip>
@@ -169,54 +192,57 @@ export default function AdminLayout({ children }) {
             </SheetTrigger>
             <SheetContent side="left" className="sm:max-w-xs">
               <nav className="grid gap-6 text-lg font-medium">
-                <Link
+                <div
                   href="#"
                   className="group flex h-10 w-10 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:text-base"
                 >
                   <Package2 className="h-5 w-5 transition-all group-hover:scale-110" />
                   <span className="sr-only">Acme Inc</span>
-                </Link>
-                <Link
+                </div>
+                <div
                   href="#"
                   className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
                 >
                   <Home className="h-5 w-5" />
                   Dashboard
-                </Link>
-                <Link
+                </div>
+                <div
                   href="#"
                   className="flex items-center gap-4 px-2.5 text-foreground"
                 >
                   <ShoppingCart className="h-5 w-5" />
                   Orders
-                </Link>
-                <Link
+                </div>
+                <div
                   href="#"
                   className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
                 >
                   <Package className="h-5 w-5" />
                   Products
-                </Link>
-                <Link
+                </div>
+                <div
                   href="#"
                   className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
                 >
                   <Users2 className="h-5 w-5" />
                   Customers
-                </Link>
-                <Link
+                </div>
+                <div
                   href="#"
                   className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
                 >
                   <LineChart className="h-5 w-5" />
                   Settings
-                </Link>
+                </div>
               </nav>
             </SheetContent>
           </Sheet>
         </header>
         <div className="flex flex-col sm:gap-4 sm:py-0 sm:pl-14 justify-end">
-          <header className="flex items-center justify-end p-4 sm:px-6">
+          <header className="flex items-center justify-between p-3 sm:px-6">
+            <div className="flex items-center gap-4 text-xl">
+              {getPageName(current)}
+            </div>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button
@@ -237,8 +263,7 @@ export default function AdminLayout({ children }) {
                 <DropdownMenuLabel>My Account</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>Settings</DropdownMenuItem>
-                <DropdownMenuItem>Support</DropdownMenuItem>
-                <DropdownMenuSeparator />
+
                 <DropdownMenuItem onClick={logoutBtn}>Logout</DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
