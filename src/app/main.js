@@ -239,7 +239,7 @@ export default function Main() {
             >
               <div class="h-full w-full rounded-md bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-1">
                 <GridLines
-                  className="grid-area h-[100%]  bg-[#020817]  rounded-3xl "
+                  className="grid-area h-[100%]  bg-[#080c17]  rounded-3xl "
                   cellWidth={25}
                   cellWidth2={25}
                   strokeWidth={0.25}
@@ -259,7 +259,7 @@ export default function Main() {
             </ParallaxLayer>
 
             <ParallaxLayer offset={2.35} speed={0.75}>
-              <div className="flex flex-row text-slate-100 text-3xl  md:text-4xl lg:text-5xl ml-[370px] gap-[80px]">
+              <div className="flex flex-row text-slate-400 text-3xl  md:text-4xl lg:text-5xl ml-[370px] gap-[80px]">
                 <div>
                   <div style={{ display: "inline-block" }}>Hey👋 I&apos;m</div>
                   <div className="pl-2 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 bg-clip-text text-transparent font-outline-2 font-semibold pb-2 inline-block">

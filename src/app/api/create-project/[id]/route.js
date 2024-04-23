@@ -11,6 +11,7 @@ export async function PUT(request, { params }) {
   const pinned = body.pinned || null;
   const content = body.content || null;
   const weblink = body.weblink || null;
+  const imagelink = body.imagelink || null;
   const cookiestore = cookies();
   const token = cookiestore.get(COOKIE_NAME);
   if (!token || !project_id) {
@@ -31,11 +32,13 @@ export async function PUT(request, { params }) {
         content = ${content},
         githublink = ${githublink},
         weblink = ${weblink},
+        imagelink = ${imagelink},
         pinned = ${pinned}
       WHERE project_id = ${project_id}
       `;
     return NextResponse.json({ result }, { status: 200 });
   } catch (error) {
+    console.error("Error updating project:", error);
     return NextResponse.json({ error }, { status: 500 });
   }
 }

@@ -11,6 +11,7 @@ export async function POST(request) {
   const pinned = body.pinned || null;
   const content = body.content || null;
   const weblink = body.weblink || null;
+  const imagelink = body.imagelink || null;
   const cookiestore = cookies();
   const token = cookiestore.get(COOKIE_NAME);
   if (!token) {
@@ -25,10 +26,10 @@ export async function POST(request) {
       throw Error("INVALID FIELDS");
     }
     const result = await sql`
-      INSERT INTO Projects (title, content,githublink,weblink,pinned)
-      VALUES (${title}, ${content},${githublink ? githublink : null},${
+      INSERT INTO Projects (title, content,githublink,weblink,imagelink,pinned)
+      VALUES (${title}, ${content}, ${githublink ? githublink : null}, ${
       weblink ? weblink : null
-    },${pinned ? pinned : 0});
+    }, ${imagelink ? imagelink : null}, ${pinned ? pinned : 0});
     `;
 
     return NextResponse.json({ result }, { status: 200 });
@@ -36,4 +37,3 @@ export async function POST(request) {
     return NextResponse.json({ error }, { status: 500 });
   }
 }
-

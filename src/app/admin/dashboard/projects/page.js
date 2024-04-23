@@ -38,6 +38,7 @@ export default function Projects() {
     content: "",
     githublink: "",
     weblink: "",
+    imagelink: "",
     pinned: "",
   });
   const [formData, setFormData] = useState({
@@ -45,6 +46,7 @@ export default function Projects() {
     content: "",
     githublink: "",
     weblink: "",
+    imagelink: "",
     pinned: "",
   });
   const [modal, setModal] = useState(0);
@@ -88,7 +90,13 @@ export default function Projects() {
           "Content-Type": "application/json",
         },
       });
-      setFormData({ title: "", content: "", githublink: "", weblink: "" });
+      setFormData({
+        title: "",
+        content: "",
+        githublink: "",
+        weblink: "",
+        imagelink: "",
+      });
       closeModal();
       toast.success("Added Project!", {
         position: "bottom-right",
@@ -165,6 +173,7 @@ export default function Projects() {
         title: "",
         content: "",
         githublink: "",
+        imagelink: "",
         weblink: "",
       });
       closeModal();
@@ -299,6 +308,7 @@ export default function Projects() {
                   <TableHead>Content</TableHead>
                   <TableHead>Github Link</TableHead>
                   <TableHead>Web Link</TableHead>
+                  <TableHead>Image Link</TableHead>
                   <TableHead>Pinned</TableHead>
                   <TableHead>Actions</TableHead>
                 </TableRow>
@@ -318,7 +328,27 @@ export default function Projects() {
                         {project.githublink}
                       </a>
                     </TableCell>
-                    <TableCell>{project.weblink}</TableCell>
+                    <TableCell>
+                      {" "}
+                      <a
+                        href={project.weblink}
+                        className="text-blue-500 hover:underline"
+                      >
+                        {project.weblink}
+                      </a>
+                    </TableCell>
+                    <TableCell>
+                      {project.imagelink ? (
+                        <a
+                          href={project.imagelink}
+                          className="text-blue-500 hover:underline"
+                        >
+                          Link
+                        </a>
+                      ) : (
+                        <></>
+                      )}
+                    </TableCell>
                     <TableCell>
                       {project.pinned ? <TiTick size={25} /> : <ImCross />}
                     </TableCell>

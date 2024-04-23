@@ -75,6 +75,14 @@ export default function EditModal(props) {
             onChange={handleChangeEdit}
             className="rounded-xl p-2 bg-slate-800 text-xl"
           />
+          <InputText
+            type="text"
+            name="imagelink"
+            placeholder="Image Link"
+            value={current_project.imagelink}
+            onChange={handleChangeEdit}
+            className="rounded-xl p-2 bg-slate-800 text-xl"
+          />
           <div className="flex flex-row justify-start content-center items-center gap-2 mx-3">
             <div className="card flex justify-center content-center ">
               <Switch checked={checked} onCheckedChange={(e) => check(e)} />
