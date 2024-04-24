@@ -21,6 +21,7 @@ import AboutMe from "./aboutme";
 import GridLines from "react-gridlines";
 import { SocialIcon } from "react-social-icons";
 import { useRouter } from "next/navigation";
+import { StickyScroll } from "@/components/ui/sticky-scroll-reveal";
 export default function Main() {
   const { push } = useRouter();
   const [init, setInit] = useState(false);
@@ -70,14 +71,86 @@ export default function Main() {
       event_label: "about_me",
     });
   };
-
+  const [imgLoading, setImgLoading] = useState(true);
+  const content = [
+    {
+      title: "Collaborative Editing",
+      description:
+        "Work together in real time with your team, clients, and stakeholders. Collaborate on documents, share ideas, and make decisions quickly. With our platform, you can streamline your workflow and increase productivity.",
+      content: (
+        <div className="h-full w-full bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] flex items-center justify-center text-white">
+          Collaborative Editing
+        </div>
+      ),
+    },
+    {
+      title: "Real time changes",
+      description:
+        "See changes as they happen. With our platform, you can track every modification in real time. No more confusion about the latest version of your project. Say goodbye to the chaos of version control and embrace the simplicity of real-time updates.",
+      content: (
+        <div className="h-full w-full  flex items-center justify-center text-white">
+          <Image
+            src="/linear.webp"
+            width={300}
+            height={300}
+            className="h-full w-full object-cover"
+            alt="linear board demo"
+          />
+        </div>
+      ),
+    },
+    {
+      title: "Version control",
+      description:
+        "Experience real-time updates and never stress about version control again. Our platform ensures that you're always working on the most recent version of your project, eliminating the need for constant manual updates. Stay in the loop, keep your team aligned, and maintain the flow of your work without any interruptions.",
+      content: (
+        <div className="h-full w-full bg-[linear-gradient(to_bottom_right,var(--orange-500),var(--yellow-500))] flex items-center justify-center text-white">
+          Version control
+        </div>
+      ),
+    },
+    {
+      title: "Running out of content",
+      description:
+        "Experience real-time updates and never stress about version control again. Our platform ensures that you're always working on the most recent version of your project, eliminating the need for constant manual updates. Stay in the loop, keep your team aligned, and maintain the flow of your work without any interruptions.",
+      content: (
+        <Image
+          className={`${
+            imgLoading ? "animate-pulse bg-gray-200 blur-md" : ""
+          } mb-5 rounded-md`}
+          src={"/Me.jpg"}
+          style={{
+            width: "100%",
+            height: "auto",
+            objectFit: "cover",
+            aspectRatio: "3/2",
+          }}
+          width={0}
+          height={0}
+          sizes="100vw"
+          alt="Image"
+          onLoadingComplete={() => setImgLoading(false)}
+        ></Image>
+      ),
+    },
+    {
+      title: "Running out of content",
+      description:
+        "Experience real-time updates and never stress about version control again. Our platform ensures that you're always working on the most recent version of your project, eliminating the need for constant manual updates. Stay in the loop, keep your team aligned, and maintain the flow of your work without any interruptions.",
+      content: (
+        <div className="h-full w-full bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] flex items-center justify-center text-white">
+          Running out of content
+        </div>
+      ),
+    },
+  ];
   return (
     <div suppressHydrationWarning={true}>
       {isBrowser ? (
         <main>
-          <Parallax className="select-none" pages={3} ref={ref}>
+          <Parallax className="select-none" pages={4} ref={ref}>
             <ParallaxLayer
-              factor={4}
+              factor={5}
               speed={0.5}
               className="bg-gradient-to-bl
             from-[#000103] via-zinc-600/20 to-[#010610] flex flex-col  justify-center items-center p-24 text-center sm:w-auto w-screen z-[-2]"
@@ -88,7 +161,7 @@ export default function Main() {
                   id="tsparticles"
                   particlesLoaded={particlesLoaded}
                   options={{
-                    fpsLimit: 120,
+                    fpsLimit: 60,
                     interactivity: {
                       events: {
                         onClick: {
@@ -214,15 +287,17 @@ export default function Main() {
                 </div>
               </div>
             </ParallaxLayer> */}
-            <ParallaxLayer
-              offset={1}
-              className="justify-center items-center "
-            >
+            <ParallaxLayer offset={1} speed={0.5}>
+              {" "}
+              <StickyScroll content={content} />
+            </ParallaxLayer>
+            <ParallaxLayer offset={2} className="justify-center items-center ">
               <div className=" rounded-t-3xl">
                 <div className=" rounded-3xl  flex flex-col pl-20">
                   <div className="sm:text-5xl text-4xl my-5">PROJECTS</div>
                 </div>
               </div>
+
               <Project></Project>
               <div
                 className="animate-bounce flex flex-col justify-center items-center pt-4 text-xl sm:hover:text-zinc-400 duration-500 active:text-zinc-400 text-zinc-600"
@@ -233,7 +308,7 @@ export default function Main() {
             </ParallaxLayer>
 
             <ParallaxLayer
-              offset={2}
+              offset={3}
               className="bg-slate-800  rounded-3xl"
               speed={0.5}
             >
@@ -258,7 +333,7 @@ export default function Main() {
               </div>
             </ParallaxLayer>
 
-            <ParallaxLayer offset={2.35} speed={0.75}>
+            <ParallaxLayer offset={3.35} speed={0.75}>
               <div className="flex flex-row text-slate-400 text-3xl  md:text-4xl lg:text-5xl ml-[370px] gap-[80px]">
                 <div>
                   <div style={{ display: "inline-block" }}>Hey👋 I&apos;m</div>
@@ -313,7 +388,7 @@ export default function Main() {
               </div>
             </ParallaxLayer>
             <ParallaxLayer
-              offset={2.25}
+              offset={3.25}
               className="ml-10 "
               style={{ width: "270px" }}
             >
@@ -329,7 +404,7 @@ export default function Main() {
             className=" select-none bg-gradient-to-bl
     from-[#000103] via-zinc-600/20 to-[#010610] "
           >
-            <div className=" flex flex-col  justify-center items-start text-center items-center sm:w-auto w-screen">
+            <div className=" flex flex-col  justify-center  text-center items-center sm:w-auto w-screen">
               {init && (
                 <Particles
                   className="z-[-1] "
