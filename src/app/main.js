@@ -10,6 +10,7 @@ import LinkedInLogo from "../../public/linkedin (1).png";
 import Project from "./project";
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 import { useScroll, animated } from "@react-spring/web";
+import { Tabs } from "@/components/ui/tabs-acc";
 import {
   BrowserView,
   MobileView,
@@ -140,6 +141,58 @@ export default function Main() {
       content: (
         <div className="h-full w-full bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] flex items-center justify-center text-white">
           Running out of content
+        </div>
+      ),
+    },
+  ];
+  const tabs = [
+    {
+      title: "Product",
+      value: "product1",
+      content: (
+        <div className="w-full overflow-hidden flex flex-col h-full rounded-2xl  text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900 mb-2">
+          <p className="p-5">Product Tab</p>
+          <Project />
+        </div>
+      ),
+    },
+    {
+      title: "Product",
+      value: "product2",
+      content: (
+        <div className="w-full overflow-hidden flex flex-col h-full rounded-2xl  text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900 mb-2">
+          <p className="p-5">Product Tab</p>
+          <Project />
+        </div>
+      ),
+    },
+    {
+      title: "Product",
+      value: "product3",
+      content: (
+        <div className="w-full overflow-hidden flex flex-col h-full rounded-2xl  text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900 mb-2">
+          <p className="p-5">Product Tab</p>
+          <Project />
+        </div>
+      ),
+    },
+    {
+      title: "Product",
+      value: "product4",
+      content: (
+        <div className="w-full overflow-hidden flex flex-col h-full rounded-2xl  text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900 mb-2">
+          <p className="p-5">Product Tab</p>
+          <Project />
+        </div>
+      ),
+    },
+    {
+      title: "Product",
+      value: "product5",
+      content: (
+        <div className="w-full overflow-hidden flex flex-col h-full rounded-2xl  text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900 mb-2">
+          <p className="p-5">Product Tab</p>
+          <Project />
         </div>
       ),
     },
@@ -292,19 +345,7 @@ export default function Main() {
               <StickyScroll content={content} />
             </ParallaxLayer>
             <ParallaxLayer offset={2} className="justify-center items-center ">
-              <div className=" rounded-t-3xl">
-                <div className=" rounded-3xl  flex flex-col pl-20">
-                  <div className="sm:text-5xl text-4xl my-5">PROJECTS</div>
-                </div>
-              </div>
-
-              <Project></Project>
-              <div
-                className="animate-bounce flex flex-col justify-center items-center pt-4 text-xl sm:hover:text-zinc-400 duration-500 active:text-zinc-400 text-zinc-600"
-                onClick={() => push("/Projects")}
-              >
-                View All
-              </div>
+              <Tabs tabs={tabs} />
             </ParallaxLayer>
 
             <ParallaxLayer

@@ -67,7 +67,7 @@ export default function Project() {
                   <div className="absolute inset-0 translate-z-0 bg-[#0c0f3edd] rounded-full blur-[80px]"></div>
                 </div> */}
 
-                <div className="flex flex-col h-full items-center mb-10">
+                <div className="flex flex-col h-full items-center mb-5">
                   <div className="mb-5 sm:h-[125px] overflow-ellipsis">
                     <h2 className="text-xl text-slate-200 font-bold mb-1 ">
                       {item.title}
@@ -76,7 +76,7 @@ export default function Project() {
                   </div>
                 </div>
               </div>
-              <div className="flex flex-row gap-2">
+              <div className="flex flex-row gap-2 justify-end">
                 {item.githublink ? (
                   <a
                     className="inline-flex justify-center rounded-full items-center whitespace-nowrap bg-slate-400 hover:bg-slate-900 border border-slate-700 p-2 text-sm font-medium text-slate-300 focus-visible:outline-none focus-visible:ring focus-visible:ring-indigo-300 dark:focus-visible:ring-slate-600 transition-colors duration-150"
