@@ -5,26 +5,25 @@ import Skleton from "./skleton";
 import Image from "next/image";
 import "./scrollbar.css";
 import { isMobile } from "react-device-detect";
+import { useContext } from "react";
+import { LoadingDataContext } from "@/context/LoadingDataContext";
 export default function Project({ type }) {
-  const [data, setData] = useState(null);
-  const [isLoading, setLoading] = useState(true);
   const [imgLoading, setImgLoading] = useState(true);
-  const fetchProjects = async () => {
-    // Define fetchProjects as an async function
-    const response = await fetch(`/api/get-projects?type=${type}`, {
-      method: "POST",
-    });
-    const rdata = await response.json();
-    setData(rdata.projects);
-    setLoading(false);
-  };
-
-  useEffect(() => {
-    fetchProjects(); // Call fetchProjects inside useEffect
-  }, []);
+  const { isLoading, data, setLoading, setData } =
+    useContext(LoadingDataContext);
+  let projects;
+  if (type === 0) {
+    projects = data?.filter((project) => project.pinned === 1);
+  } else {
+    projects = data?.filter((project) => project.type === String(type));
+  }
   return !isLoading ? (
-    <div className="scrolltarget flex flex-row overflow-x-auto xl:flex-row m-4">
-      {data.map((item) => (
+    <div
+      className={`scrolltarget flex flex-row overflow-x-auto xl:flex-row m-4 ${
+        projects.length < 3 ? "justify-center" : "justify-start"
+      }`}
+    >
+      {projects.map((item) => (
         <Spotlight
           key={item.id}
           className="max-w-sm  mx-2  flex-wrap  lg:max-w-none group mb-4 "
