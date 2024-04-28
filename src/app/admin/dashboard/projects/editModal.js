@@ -5,6 +5,7 @@ import { InputTextarea } from "primereact/inputtextarea";
 import { useState } from "react";
 import { Switch } from "@/components/ui/switch";
 import { LoaderIcon } from "lucide-react";
+import { Select, SelectSection, SelectItem } from "@nextui-org/react";
 
 export default function EditModal(props) {
   const current_project = props.current_project;
@@ -15,6 +16,12 @@ export default function EditModal(props) {
   const modal = props.modal;
   const loading = props.loading;
   const [checked, setChecked] = useState(current_project.pinned ? true : false);
+  const menus = [
+    { value: 1, label: "Fullstack" },
+    { value: 2, label: "Frontend" },
+    { value: 3, label: "Packages" },
+    { value: 4, label: "Others" },
+  ];
   const check = (e) => {
     setChecked(e);
     setCurrentProject({ ...current_project, pinned: e ? 1 : 0 });
@@ -83,6 +90,30 @@ export default function EditModal(props) {
             onChange={handleChangeEdit}
             className="rounded-xl p-2 bg-slate-800 text-xl"
           />
+          <InputText
+            type="text"
+            name="tags"
+            placeholder="Tags"
+            value={current_project.tags}
+            onChange={handleChangeEdit}
+            className="rounded-xl p-2 bg-slate-800 text-xl"
+          />
+          <Select
+            isRequired
+            label="Type"
+            placeholder="Enter Type"
+            className="max-w-xs"
+            color="bg-slate-800"
+            name="type"
+            selectedKeys={[current_project.type]}
+            onChange={handleChangeEdit}
+          >
+            {menus.map((menu) => (
+              <SelectItem key={menu.value} value={menu.value}>
+                {menu.label}
+              </SelectItem>
+            ))}
+          </Select>
           <div className="flex flex-row justify-start content-center items-center gap-2 mx-3">
             <div className="card flex justify-center content-center ">
               <Switch checked={checked} onCheckedChange={(e) => check(e)} />

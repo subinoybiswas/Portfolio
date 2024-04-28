@@ -1,39 +1,30 @@
 import Spotlight from "./spotlight";
 import { SpotlightCard } from "./spotlight";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import Skleton from "./skleton";
 import Image from "next/image";
 import "./scrollbar.css";
-import {
-  BrowserView,
-  MobileView,
-  isBrowser,
-  isMobile,
-} from "react-device-detect";
-export default function Project() {
+import { isMobile } from "react-device-detect";
+export default function Project({ type }) {
   const [data, setData] = useState(null);
   const [isLoading, setLoading] = useState(true);
   const [imgLoading, setImgLoading] = useState(true);
+  const fetchProjects = async () => {
+    // Define fetchProjects as an async function
+    const response = await fetch(`/api/get-projects?type=${type}`, {
+      method: "POST",
+    });
+    const rdata = await response.json();
+    setData(rdata.projects);
+    setLoading(false);
+  };
+
   useEffect(() => {
-    fetch("/api/get-projects", { method: "POST" })
-      .then((res) => res.json())
-      .then((rdata) => {
-        setData(rdata.projects);
-        setLoading(false);
-
-        // console.log(data);
-      });
+    fetchProjects(); // Call fetchProjects inside useEffect
   }, []);
-  const maxProjects = isMobile ? 3 : 6;
-  const sortedProjects = data
-    ? data.slice().sort((a, b) => (b.pinned ? 1 : -1)) // Sort pinned projects first
-    : [];
-
-  const projectsToRender = sortedProjects.slice(0, maxProjects);
-  const tags = ["React", "Next.js", "TailwindCSS"];
   return !isLoading ? (
     <div className="scrolltarget flex flex-row overflow-x-auto xl:flex-row m-4">
-      {projectsToRender.map((item) => (
+      {data.map((item) => (
         <Spotlight
           key={item.id}
           className="max-w-sm  mx-2  flex-wrap  lg:max-w-none group mb-4 "
@@ -116,12 +107,12 @@ export default function Project() {
                   )}
                 </div>
                 <div className="text-sm flex flex-row items-center gap-1 font-normal">
-                  {tags.map((item) => (
+                  {item.tags.split(",").map((tag) => (
                     <div
                       className="px-2 p-1 bg-slate-900/90 rounded-md"
-                      key={item}
+                      key={tag.trim()}
                     >
-                      {item}
+                      {tag.trim()}
                     </div>
                   ))}
                 </div>

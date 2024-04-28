@@ -12,6 +12,8 @@ export async function PUT(request, { params }) {
   const content = body.content || null;
   const weblink = body.weblink || null;
   const imagelink = body.imagelink || null;
+  const tags = body.tags || null;
+  const type = body.type || null;
   const cookiestore = cookies();
   const token = cookiestore.get(COOKIE_NAME);
   if (!token || !project_id) {
@@ -33,7 +35,9 @@ export async function PUT(request, { params }) {
         githublink = ${githublink},
         weblink = ${weblink},
         imagelink = ${imagelink},
-        pinned = ${pinned}
+        pinned = ${pinned},
+        tags = ${tags},
+        type = ${type}
       WHERE project_id = ${project_id}
       `;
     return NextResponse.json({ result }, { status: 200 });

@@ -2,10 +2,11 @@ import { sql } from "@vercel/postgres";
 import { NextResponse } from "next/server";
 export const fetchCache = "force-no-store";
 export async function POST(request) {
-  const req = request;
+  let type = request.nextUrl.searchParams.get("type");
+  console.log(type);
   try {
-    const { rows: projects } = await sql`SELECT * FROM Projects`;
-
+    const { rows: projects } =
+      await sql`SELECT * FROM Projects WHERE type = ${type}`;
     return NextResponse.json(
       { projects },
       {

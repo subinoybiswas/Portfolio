@@ -11,7 +11,7 @@
   "dependencies": {
     "@google-analytics/data": "^4.3.0",
     "@google/model-viewer": "^3.4.0",
-    "@nextui-org/react": "^2.3.5",
+    "@nextui-org/react": "^2.3.6",
     "@octokit/rest": "^20.1.0",
     "@radix-ui/react-avatar": "^1.0.4",
     "@radix-ui/react-dialog": "^1.0.5",
