@@ -416,7 +416,7 @@ export default function Main() {
                     }}
                   />
                 )}
-                <div className=" mt-[35vh] flex  flex-row justify-center text-center sm:gap-4 gap-2 item-center my-5 sm:my-10 text-lg sm:text-lg text-zinc-600">
+                <div className=" mt-[35vh] flex  flex-row justify-center text-center sm:gap-4 gap-2 item-center my-5 sm:my-10 text-lg sm:text-lg text-zinc-600 ">
                   <a
                     className="sm:hover:text-zinc-400 duration-500 active:text-zinc-400"
                     onClick={() => ScrollToProject(2)}
@@ -440,7 +440,7 @@ bg-[length:200%_auto] animate-gradient pb-1 text-7xl sm:text-8xl "
                   </div>
                 </div>
 
-                <div className=" my-5 sm:my-10 text-sm sm:text-md sm:w-auto w-[70vw] text-slate-500">
+                <div className=" my-5 sm:my-10 text-sm sm:text-md sm:w-auto w-[70vw] text-slate-500  ">
                   <p>Your friendly neighbourhood developer</p>
                 </div>
                 <div className="flex flex-row gap-4">
@@ -467,20 +467,14 @@ bg-[length:200%_auto] animate-gradient pb-1 text-7xl sm:text-8xl "
                     />
                   </Link>
                 </div>
-                <div className="p-0 m-0">
-                  <div className="w-screen mt-[30vh]" ref={projectRef}>
-                    <div className="flex flex-col text-center items-center justify-center text-4xl mb-4">
-                      Projects
-                    </div>
-                    <Project></Project>
-                    <div
-                      className="animate-bounce flex flex-col justify-center items-center pb-11 pt-1 text-2xl sm:hover:text-zinc-400 duration-500 active:text-zinc-400 text-zinc-600"
-                      onClick={() => push("/Projects")}
-                    >
-                      View All
-                    </div>
+                <div className="flex flex-col mt-[35vh]">
+                  <div className="">
+                    <StickyScroll content={content} />
                   </div>
-                  <div className="text-left flex-grow" ref={meRef}>
+                  <div className="w-screen mt-[30vh]" ref={projectRef}>
+                    {tabs && <Tabs tabs={tabs} />}
+                  </div>
+                  <div className="text-left mt-20" ref={meRef}>
                     <div class="h-full w-full rounded-3xl bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-1">
                       <GridLines
                         className="grid-area  z-[-1] bg-slate-100 rounded-3xl "

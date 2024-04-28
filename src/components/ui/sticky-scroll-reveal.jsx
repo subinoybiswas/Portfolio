@@ -29,11 +29,15 @@ export const StickyScroll = ({ content, contentClassName }) => {
     );
     setActiveCard(closestBreakpointIndex);
   });
-
   const backgroundColors = [
     "rgba(31, 41, 55, 0.8)", // Slate 900 with 0.8 opacity
     "rgba(0, 0, 0, 0.8)", // Black with 0.8 opacity
     "rgba(31, 41, 55, 0.8)", // Neutral 900 with 0.8 opacity
+
+    "rgba(100, 149, 237, 0.8)", // Cornflower blue with 0.8 opacity
+
+    "rgba(128, 128, 128, 0.8)", // Gray with 0.8 opacity
+    "rgba(0, 174, 239, 0.8)", // Turquoise with 0.8 opacity
   ];
 
   const linearGradients = [
@@ -48,7 +52,7 @@ export const StickyScroll = ({ content, contentClassName }) => {
         backgroundColor: backgroundColors[activeCard % backgroundColors.length],
         backdropFilter: "blur(5px)",
       }}
-      className="h-[90%] overflow-y-auto flex justify-center relative space-x-10 rounded-md p-10"
+      className="h-[90vh] sm:h[90%] overflow-y-auto flex justify-center relative space-x-10 rounded-md p-5 sm:p-10"
       style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       ref={ref}
     >
