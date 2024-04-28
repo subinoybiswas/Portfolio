@@ -3,6 +3,7 @@ import { SpotlightCard } from "./spotlight";
 import { useEffect, useState } from "react";
 import Skleton from "./skleton";
 import Image from "next/image";
+import "./scrollbar.css";
 import {
   BrowserView,
   MobileView,
@@ -23,15 +24,15 @@ export default function Project() {
         // console.log(data);
       });
   }, []);
-  const maxProjects = isMobile ? 3 : 3;
+  const maxProjects = isMobile ? 3 : 6;
   const sortedProjects = data
     ? data.slice().sort((a, b) => (b.pinned ? 1 : -1)) // Sort pinned projects first
     : [];
 
   const projectsToRender = sortedProjects.slice(0, maxProjects);
-
+  const tags = ["React", "Next.js", "TailwindCSS"];
   return !isLoading ? (
-    <div className="flex flex-col flex-wrap  xl:flex-row my-4 items-center justify-center">
+    <div className="scrolltarget flex flex-row overflow-x-auto xl:flex-row m-4">
       {projectsToRender.map((item) => (
         <Spotlight
           key={item.id}
@@ -76,42 +77,54 @@ export default function Project() {
                   </div>
                 </div>
               </div>
-              <div className="flex flex-row gap-2 justify-end">
-                {item.githublink ? (
-                  <a
-                    className="inline-flex justify-center rounded-full items-center whitespace-nowrap bg-slate-400 hover:bg-slate-900 border border-slate-700 p-2 text-sm font-medium text-slate-300 focus-visible:outline-none focus-visible:ring focus-visible:ring-indigo-300 dark:focus-visible:ring-slate-600 transition-colors duration-150"
-                    href={item.githublink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Image
-                      src="/github-mark.svg"
-                      alt="GitHub Link"
-                      height="20"
-                      width="20"
-                    ></Image>
-                  </a>
-                ) : (
-                  <></>
-                )}
+              <div className="flex flex-row justify-between">
+                <div className="flex flex-row gap-2 justify-start">
+                  {item.githublink ? (
+                    <a
+                      className="inline-flex justify-center rounded-full items-center whitespace-nowrap bg-slate-400 hover:bg-slate-900 border border-slate-700 p-2 text-sm font-medium text-slate-300 focus-visible:outline-none focus-visible:ring focus-visible:ring-indigo-300 dark:focus-visible:ring-slate-600 transition-colors duration-150"
+                      href={item.githublink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Image
+                        src="/github-mark.svg"
+                        alt="GitHub Link"
+                        height="20"
+                        width="20"
+                      ></Image>
+                    </a>
+                  ) : (
+                    <></>
+                  )}
 
-                {item.weblink ? (
-                  <a
-                    className="inline-flex justify-center rounded-full items-center whitespace-nowrap bg-slate-400 hover:bg-slate-900 border border-slate-700 p-2 text-sm font-medium text-slate-300 focus-visible:outline-none focus-visible:ring focus-visible:ring-indigo-300 dark:focus-visible:ring-slate-600 transition-colors duration-150"
-                    href={item.weblink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Image
-                      src="/web.svg"
-                      alt="Web Link"
-                      height="20"
-                      width="20"
-                    ></Image>
-                  </a>
-                ) : (
-                  <></>
-                )}
+                  {item.weblink ? (
+                    <a
+                      className="inline-flex justify-center rounded-full items-center whitespace-nowrap bg-slate-400 hover:bg-slate-900 border border-slate-700 p-2 text-sm font-medium text-slate-300 focus-visible:outline-none focus-visible:ring focus-visible:ring-indigo-300 dark:focus-visible:ring-slate-600 transition-colors duration-150"
+                      href={item.weblink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Image
+                        src="/web.svg"
+                        alt="Web Link"
+                        height="20"
+                        width="20"
+                      ></Image>
+                    </a>
+                  ) : (
+                    <></>
+                  )}
+                </div>
+                <div className="text-sm flex flex-row items-center gap-1 font-normal">
+                  {tags.map((item) => (
+                    <div
+                      className="px-2 p-1 bg-slate-900/90 rounded-md"
+                      key={item}
+                    >
+                      {item}
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </SpotlightCard>

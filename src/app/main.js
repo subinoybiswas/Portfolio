@@ -4,10 +4,11 @@ import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 import Image from "next/image";
 import Link from "next/link";
-import InstaLogo from "../../public/instagram-logo.png";
+
 import GitHubLogo from "../../public/github-mark.png";
 import LinkedInLogo from "../../public/linkedin (1).png";
 import Project from "./project";
+import tabs from "@/helpers/tabs";
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 import { useScroll, animated } from "@react-spring/web";
 import { Tabs } from "@/components/ui/tabs-acc";
@@ -74,59 +75,7 @@ export default function Main() {
     });
   };
   const [imgLoading, setImgLoading] = useState(true);
-  
-  const tabs = [
-    {
-      title: "Product",
-      value: "product1",
-      content: (
-        <div className="w-full overflow-hidden flex flex-col h-full rounded-2xl  text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900 mb-2">
-          <p className="p-5">Product Tab</p>
-          <Project />
-        </div>
-      ),
-    },
-    {
-      title: "Product",
-      value: "product2",
-      content: (
-        <div className="w-full overflow-hidden flex flex-col h-full rounded-2xl  text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900 mb-2">
-          <p className="p-5">Product Tab</p>
-          <Project />
-        </div>
-      ),
-    },
-    {
-      title: "Product",
-      value: "product3",
-      content: (
-        <div className="w-full overflow-hidden flex flex-col h-full rounded-2xl  text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900 mb-2">
-          <p className="p-5">Product Tab</p>
-          <Project />
-        </div>
-      ),
-    },
-    {
-      title: "Product",
-      value: "product4",
-      content: (
-        <div className="w-full overflow-hidden flex flex-col h-full rounded-2xl  text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900 mb-2">
-          <p className="p-5">Product Tab</p>
-          <Project />
-        </div>
-      ),
-    },
-    {
-      title: "Product",
-      value: "product5",
-      content: (
-        <div className="w-full overflow-hidden flex flex-col h-full rounded-2xl  text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900 mb-2">
-          <p className="p-5">Product Tab</p>
-          <Project />
-        </div>
-      ),
-    },
-  ];
+
   return (
     <div suppressHydrationWarning={true}>
       {isBrowser ? (
@@ -275,7 +224,7 @@ export default function Main() {
               <StickyScroll content={content} />
             </ParallaxLayer>
             <ParallaxLayer offset={2} className="justify-center items-center ">
-              <Tabs tabs={tabs} />
+              {tabs&&<Tabs tabs={tabs} />}
             </ParallaxLayer>
 
             <ParallaxLayer

@@ -1,0 +1,36 @@
+/* CustomScrollbar.css */
+
+/* Container style with overflow */
+.scrolltarget {
+  overflow-y: auto; /* Enable vertical scrollbar when needed */
+  scrollbar-color: #4d7fff93 #dddddd37;
+  /* Thumb and track color for Firefox */
+}
+
+/* Style for WebKit browsers */
+.scrolltarget::-webkit-scrollbar {
+  width: 100vw; /* Width of the scrollbar */
+}
+
+/* Style for the scrollbar thumb */
+.scrolltarget::-webkit-scrollbar-thumb {
+  background: #1e293b7a;
+  border-radius: 99px;
+}
+
+/* Style for the scrollbar track */
+.scrolltarget::-webkit-scrollbar-track {
+  background-color: #ddddddc7; /* Track background color */
+  border: 1px solid #8d8888; /* Track border */
+  border-radius: 99px;
+}
+
+/* Hide the scrollbar buttons */
+.scrolltarget::-webkit-scrollbar-button {
+  display: none;
+}
+
+/* Style for Firefox scrollbar thumb */
+.scrolltarget {
+  scrollbar-color: #4d7fff #ddd; /* Thumb and track color for Firefox */
+}
