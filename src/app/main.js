@@ -224,7 +224,7 @@ export default function Main() {
               <StickyScroll content={content} />
             </ParallaxLayer>
             <ParallaxLayer offset={2} className="justify-center items-center ">
-              {tabs&&<Tabs tabs={tabs} />}
+              {tabs && <Tabs tabs={tabs} />}
             </ParallaxLayer>
 
             <ParallaxLayer
