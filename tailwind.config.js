@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-const { nextui } = require("@nextui-org/react");
+
 module.exports = {
   darkMode: ["class"],
   plugins: [
@@ -90,7 +90,7 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate"), nextui()],
+  plugins: [require("tailwindcss-animate")],
 };
 
 function addVariablesForColors({ addBase, theme }) {
