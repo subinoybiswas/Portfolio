@@ -62,7 +62,7 @@ export default function Main() {
   const meRef = useRef();
   const ScrollToProject = (x) => {
     if (x === 1) {
-      ref.current.scrollTo(1);
+      ref.current.scrollTo(2);
     } else if (x === 2) {
       projectRef.current.scrollIntoView({
         behavior: "smooth",
@@ -77,7 +77,7 @@ export default function Main() {
   };
   const ScrollToMe = (x) => {
     if (x === 1) {
-      ref.current.scrollTo(2);
+      ref.current.scrollTo(3);
     } else if (x === 2) {
       meRef.current.scrollIntoView({
         behavior: "smooth",
@@ -313,7 +313,7 @@ export default function Main() {
                         height: "350px",
                         marginBottom: "20px",
                       }}
-                      src="https://modelviewer.dev/shared-assets/models/RobotExpressive.glb"
+                      src="/RobotExpressive.glb"
                       ar=""
                       ar-modes="webxr scene-viewer quick-look"
                       camera-controls=""
@@ -477,17 +477,17 @@ bg-[length:200%_auto] animate-gradient pb-1 text-7xl sm:text-8xl "
                   <div className="text-left mt-20" ref={meRef}>
                     <div class="h-full w-full rounded-3xl bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-1">
                       <GridLines
-                        className="grid-area  z-[-1] bg-slate-100 rounded-3xl "
+                        className="grid-area h-[100%]  bg-[#080c17]  rounded-3xl "
                         cellWidth={25}
                         cellWidth2={25}
                         strokeWidth={0.25}
                         strokeWidth2={0.25}
-                        lineColor={"rgb(30 41 59)"}
-                        lineColor2={"rgb(30 41 59)"}
+                        lineColor={"rgba(229, 231, 235, 0.5)"}
+                        lineColor2={"rgba(229, 231, 235, 0.5)"}
                       >
                         <div className="flex flex-col sm:flex-row justify-center items-center gap-9 pt-5">
                           <AboutMe className="p-10"></AboutMe>
-                          <div className="flex flex-col text-black text-4xl  ">
+                          <div className="flex flex-col text-slate-300 text-4xl  ">
                             <div className="flex flex-row flex-wrap gap-2 text-center justify-center">
                               <div>Hey👋 I&apos;m</div>
                               <div
@@ -522,7 +522,7 @@ bg-[length:200%_auto] animate-gradient pb-1 text-7xl sm:text-8xl "
                                 </button>
                               </a>
                               <model-viewer
-                                src="https://modelviewer.dev/shared-assets/models/RobotExpressive.glb"
+                                src="/RobotExpressive.glb"
                                 ar=""
                                 ar-modes="webxr"
                                 camera-controls=""

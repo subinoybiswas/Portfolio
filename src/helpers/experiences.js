@@ -1,4 +1,4 @@
-import { Image } from "@nextui-org/react";
+import Image from "next/image";
 const content = [
   {
     title: "PlayTheory Labs",
@@ -18,7 +18,6 @@ const content = [
         height={0}
         sizes="100vw"
         alt="Image"
-        onLoadingComplete={() => setImgLoading(false)}
       ></Image>
     ),
   },
@@ -40,7 +39,6 @@ const content = [
         height={0}
         sizes="100vw"
         alt="Image"
-        onLoadingComplete={() => setImgLoading(false)}
       ></Image>
     ),
   },
@@ -62,7 +60,6 @@ const content = [
         height={0}
         sizes="100vw"
         alt="Image"
-        onLoadingComplete={() => setImgLoading(false)}
       ></Image>
     ),
   },
@@ -84,7 +81,6 @@ const content = [
         height={0}
         sizes="100vw"
         alt="Image"
-        onLoadingComplete={() => setImgLoading(false)}
       ></Image>
     ),
   },
@@ -106,7 +102,6 @@ const content = [
         height={0}
         sizes="100vw"
         alt="Image"
-        onLoadingComplete={() => setImgLoading(false)}
       ></Image>
     ),
   },

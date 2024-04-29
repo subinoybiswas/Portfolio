@@ -59,15 +59,17 @@ export default function Project({ type }) {
                 </div> */}
 
                 <div className="flex flex-col h-full items-center mb-5">
-                  <div className="mb-5 sm:h-[125px] overflow-ellipsis">
+                  <div className="mb-5 h-[190px] sm:h-[125px] overflow-ellipsis">
                     <h2 className="text-xl text-slate-200 font-bold mb-1 ">
                       {item.title}
                     </h2>
-                    <p className="text-sm text-slate-500">{item.content}</p>
+                    <p className="text-sm text-slate-500 flex-grow">
+                      {item.content}
+                    </p>
                   </div>
                 </div>
               </div>
-              <div className="flex flex-row justify-between">
+              <div className="flex flex-row justify-between self-end">
                 <div className="flex flex-row gap-2 justify-start">
                   {item.githublink ? (
                     <a
@@ -106,14 +108,26 @@ export default function Project({ type }) {
                   )}
                 </div>
                 <div className="text-sm flex flex-row items-center gap-1 font-normal">
-                  {item.tags.split(",").map((tag) => (
-                    <div
-                      className="px-2 p-1 bg-slate-900/90 rounded-md"
-                      key={tag.trim()}
-                    >
-                      {tag.trim()}
-                    </div>
-                  ))}
+                  {isMobile
+                    ? item.tags
+                        .split(",")
+                        .slice(0, 3)
+                        .map((tag) => (
+                          <div
+                            className="px-2 p-1 bg-slate-900/90 rounded-md"
+                            key={tag.trim()}
+                          >
+                            {tag.trim()}
+                          </div>
+                        ))
+                    : item.tags.split(",").map((tag) => (
+                        <div
+                          className="px-2 p-1 bg-slate-900/90 rounded-md"
+                          key={tag.trim()}
+                        >
+                          {tag.trim()}
+                        </div>
+                      ))}
                 </div>
               </div>
             </div>

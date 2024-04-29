@@ -8,7 +8,7 @@ export default function Skeleton() {
         <div className="relative h-full bg-[#020817] p-6 pb-8 rounded-[inherit] z-20 overflow-hidden">
           <Image
             className={`${"animate-pulse bg-gray-200 blur-md"} mb-5 rounded-3xl`}
-            src={"/loading.jpg"}
+            src={"/loading.png"}
             style={{
               width: "100%",
               height: "auto",
@@ -40,7 +40,7 @@ export default function Skeleton() {
         <div className="relative h-full bg-[#020817] p-6 pb-8 rounded-[inherit] z-20 overflow-hidden">
           <Image
             className={`${"animate-pulse bg-gray-200 blur-md"} mb-5 rounded-3xl`}
-            src={"/loading.jpg"}
+            src={"/loading.png"}
             style={{
               width: "100%",
               height: "auto",
@@ -72,7 +72,7 @@ export default function Skeleton() {
         <div className="relative h-full bg-[#020817] p-6 pb-8 rounded-[inherit] z-20 overflow-hidden">
           <Image
             className={`${"animate-pulse bg-gray-200 blur-md"} mb-5 rounded-3xl`}
-            src={"/loading.jpg"}
+            src={"/loading.png"}
             style={{
               width: "100%",
               height: "auto",
