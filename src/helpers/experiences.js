@@ -49,7 +49,7 @@ const content = [
     content: (
       <Image
         className={`mb-5 rounded-md`}
-        src={"/CodingClub.jpg"}
+        src={"/CodingClubImg.jpg"}
         style={{
           width: "100%",
           height: "auto",
