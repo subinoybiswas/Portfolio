@@ -1,11 +1,13 @@
 .scrolltarget {
   overflow-y: auto; /* Enable vertical scrollbar when needed */
-  scrollbar-color: #4d7fff #dddddd;
+ 
 }
 
 /* Style for WebKit browsers */
 .scrolltarget::-webkit-scrollbar {
-  width: 90vw; /* Width of the scrollbar */ 
+  width: 80vw; /* Width of the scrollbar */ 
+  height: 20px;
+
 }
 
 /* Style for the scrollbar thumb */
