@@ -4,8 +4,7 @@ export const fetchCache = "force-no-store";
 export async function POST(request) {
   const body = request.body;
   try {
-    const { rows: projects } =
-      await sql`SELECT * FROM Projects`;
+    const { rows: projects } = await sql`SELECT * FROM Projects`;
 
     return NextResponse.json(
       { projects },
